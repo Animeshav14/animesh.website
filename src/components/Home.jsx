@@ -1,8 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { motion } from 'framer-motion';
-import { Mail, Linkedin, Github, MapPin, FileText, Calendar, Star, Download, Filter, Menu, X } from 'lucide-react';
+import { useLocation } from 'react-router-dom';
+import { Mail, Linkedin, Github, MapPin, FileText, Calendar, Star, Download, Filter } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
+import ParticleBackground from './ParticleBackground';
 
 const education = {
   school: 'Georgia State University',
@@ -265,60 +267,28 @@ const projects = [
   },
 ];
 
-const navItems = [
-  { label: 'Home', href: '#hero' },
-  { label: 'Education', href: '#education' },
-  { label: 'Experience', href: '#experience' },
-  { label: 'Projects', href: '#projects' },
-  { label: 'Skills', href: '#skills' },
-  { label: 'Contact', href: '#contact' },
-];
-
 export default function Home() {
   const [activeFilter, setActiveFilter] = useState('all');
-  const [menuOpen, setMenuOpen] = useState(false);
+  const location = useLocation();
   const filteredProjects = activeFilter === 'all' ? projects : projects.filter((p) => p.category === activeFilter);
   const gameSrc = `${import.meta.env.BASE_URL}game/index.html`;
+
+  useEffect(() => {
+    if (location.hash) {
+      const targetId = location.hash.replace('#', '');
+      const target = document.getElementById(targetId);
+      if (target) {
+        setTimeout(() => target.scrollIntoView({ behavior: 'smooth' }), 50);
+      }
+    } else if (location.pathname === '/') {
+      window.scrollTo({ top: 0 });
+    }
+  }, [location.hash, location.pathname]);
 
   return (
     <div className="min-h-screen bg-[#0f0f0f] text-slate-100 relative z-10 overflow-hidden" id="hero">
       <ParticleBackground />
       <div className="fixed inset-0 bg-gradient-to-b from-black/60 via-[#0b0f16]/70 to-[#05070c] pointer-events-none" />
-
-      {/* Navigation */}
-      <header className="fixed top-0 left-0 right-0 z-50">
-        <div className="mx-auto max-w-6xl px-4 md:px-10">
-          <div className="mt-4 rounded-2xl md:rounded-full bg-black/70 border border-white/10 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-            <div className="flex items-center justify-between px-4 py-3 md:px-6">
-              <span className="font-semibold text-slate-50">Animesh Shrestha</span>
-              <button
-                className="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 text-slate-100 hover:border-cyan-400/50"
-                onClick={() => setMenuOpen((open) => !open)}
-                aria-label="Toggle navigation"
-              >
-                {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-                <span className="text-sm">{menuOpen ? 'Close' : 'Menu'}</span>
-              </button>
-              <nav
-                className={`${
-                  menuOpen ? 'flex' : 'hidden'
-                } md:flex flex-col md:flex-row flex-wrap gap-2 text-sm text-slate-200 md:items-center md:static absolute left-0 right-0 md:right-auto top-full md:top-auto px-4 pb-4 md:px-0 md:pb-0 bg-black/80 md:bg-transparent border-t md:border-0 border-white/10`}
-              >
-                {navItems.map((item) => (
-                  <a
-                    key={item.href}
-                    href={item.href}
-                    onClick={() => setMenuOpen(false)}
-                    className="px-3 py-2 rounded-full border border-transparent hover:border-cyan-400/50 hover:text-cyan-100 transition-colors"
-                  >
-                    {item.label}
-                  </a>
-                ))}
-              </nav>
-            </div>
-          </div>
-        </div>
-      </header>
 
       {/* Hero */}
       <section className="relative min-h-screen flex items-center px-4 md:px-10 pt-28 pb-16">
@@ -862,84 +832,4 @@ function ProjectCard({ project, index }) {
       </div>
     </motion.div>
   );
-}
-
-function ParticleBackground() {
-  const canvasRef = useRef(null);
-
-  useEffect(() => {
-    const canvas = canvasRef.current;
-    if (!canvas) return;
-    const ctx = canvas.getContext('2d');
-    const particles = [];
-    const count = 90;
-    const maxDistance = 140;
-
-    const setSize = () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    };
-    setSize();
-
-    const createParticle = () => ({
-      x: Math.random() * canvas.width,
-      y: Math.random() * canvas.height,
-      vx: (Math.random() - 0.5) * 0.6,
-      vy: (Math.random() - 0.5) * 0.6,
-      size: 1 + Math.random() * 1.2,
-    });
-
-    for (let i = 0; i < count; i += 1) {
-      particles.push(createParticle());
-    }
-
-    let animationId;
-    const draw = () => {
-      if (!ctx) return;
-      ctx.clearRect(0, 0, canvas.width, canvas.height);
-      ctx.fillStyle = 'rgba(255,255,255,0.7)';
-      ctx.strokeStyle = 'rgba(111, 211, 238, 0.25)';
-      ctx.lineWidth = 0.6;
-
-      particles.forEach((p) => {
-        p.x += p.vx;
-        p.y += p.vy;
-
-        if (p.x <= 0 || p.x >= canvas.width) p.vx *= -1;
-        if (p.y <= 0 || p.y >= canvas.height) p.vy *= -1;
-
-        ctx.beginPath();
-        ctx.arc(p.x, p.y, p.size, 0, Math.PI * 2);
-        ctx.fill();
-      });
-
-      for (let i = 0; i < particles.length; i += 1) {
-        for (let j = i + 1; j < particles.length; j += 1) {
-          const dx = particles[i].x - particles[j].x;
-          const dy = particles[i].y - particles[j].y;
-          const distSq = dx * dx + dy * dy;
-          if (distSq < maxDistance * maxDistance) {
-            const opacity = 1 - Math.sqrt(distSq) / maxDistance;
-            ctx.strokeStyle = `rgba(111, 211, 238, ${opacity * 0.35})`;
-            ctx.beginPath();
-            ctx.moveTo(particles[i].x, particles[i].y);
-            ctx.lineTo(particles[j].x, particles[j].y);
-            ctx.stroke();
-          }
-        }
-      }
-
-      animationId = requestAnimationFrame(draw);
-    };
-
-    animationId = requestAnimationFrame(draw);
-    window.addEventListener('resize', setSize);
-
-    return () => {
-      cancelAnimationFrame(animationId);
-      window.removeEventListener('resize', setSize);
-    };
-  }, []);
-
-  return <canvas ref={canvasRef} className="fixed inset-0 w-full h-full pointer-events-none z-0" />;
 }
