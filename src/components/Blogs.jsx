@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { ArrowUpRight, PenSquare, Star } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import ParticleBackground from './ParticleBackground';
+import Footer from './Footer';
 
 const blogPosts = [
   {
@@ -87,6 +88,7 @@ export default function Blogs() {
           ))}
         </div>
       </main>
+      <Footer />
     </div>
   );
 }

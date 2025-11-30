@@ -5,6 +5,7 @@ import { Mail, Linkedin, Github, MapPin, FileText, Calendar, Star, Download, Fil
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import ParticleBackground from './ParticleBackground';
+import Footer from './Footer';
 
 const education = {
   school: 'Georgia State University',
@@ -724,6 +725,7 @@ export default function Home() {
         </div>
       </section>
     </div>
+    <Footer />
   );
 }
 
