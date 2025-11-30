@@ -287,7 +287,8 @@ export default function Home() {
   }, [location.hash, location.pathname]);
 
   return (
-    <div className="min-h-screen bg-[#0f0f0f] text-slate-100 relative z-10 overflow-hidden" id="hero">
+    <>
+      <div className="min-h-screen bg-[#0f0f0f] text-slate-100 relative z-10 overflow-hidden" id="hero">
       <ParticleBackground />
       <div className="fixed inset-0 bg-gradient-to-b from-black/60 via-[#0b0f16]/70 to-[#05070c] pointer-events-none" />
 
@@ -724,8 +725,9 @@ export default function Home() {
           </Card>
         </div>
       </section>
-    </div>
-    <Footer />
+      </div>
+      <Footer />
+    </>
   );
 }
 
