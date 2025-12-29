@@ -16,6 +16,16 @@ const blogPosts = [
     link: 'https://nepaleconomicforum.org/the-digital-payment-system-in-nepal-from-cash-to-cashless-economy/',
     tags: ['Digital Payments', 'Policy', 'Nepal'],
   },
+  {
+    title: 'Keynesian Economics and Its Influence on U.S. Economic Policy',
+    source: 'Research Paper',
+    date: 'Dec 2025',
+    summary:
+      'An analysis of Keynesian economic theory and how it has shaped fiscal and monetary policy decisions in the United States. Full paper available via the linked PDF.',
+    gradient: 'from-[#061017] via-[#0b1720] to-[#051423]',
+    link: 'https://drive.google.com/file/d/1wLSfM4lM7SYYrhLIzq4xkYsZZhbKpTZ6/view',
+    tags: ['Economics', 'Keynesian', 'US Policy'],
+  },
 ];
 
 export default function Blogs() {
