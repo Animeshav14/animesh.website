@@ -54,7 +54,6 @@ function Section({ id, no, title, children, wide = false }) {
     <section id={id} className="section" aria-labelledby={`${id}-h`}>
       <div className="frame row">
         <header className="section-head">
-          <span className="label sec-no">§ {no}</span>
           <h2 id={`${id}-h`}>{title}</h2>
         </header>
         <div className={wide ? 'section-body wide' : 'section-body'}>{children}</div>
@@ -270,14 +269,13 @@ function Facts({ rows }) {
   );
 }
 
-function Study({ s, index }) {
+function Study({ s }) {
   const cls = `study is-${s.weight}${s.note ? ' has-note' : ''}`;
   if (s.weight === 'minor') {
     return (
       <article id={s.id} className={cls}>
         <div className="study-main">
           <p className="study-meta meta">
-            <span className="tnum">1.{index}</span>
             <span>{s.setting}</span>
             <span>{s.when}</span>
           </p>
@@ -291,7 +289,6 @@ function Study({ s, index }) {
     <article id={s.id} className={cls}>
       <div className="study-main">
         <p className="study-meta meta">
-          <span className="tnum">1.{index}</span>
           <span>{s.setting}</span>
           <span>{s.when}</span>
         </p>
@@ -304,7 +301,7 @@ function Study({ s, index }) {
             <SpreadChart />
             <figcaption>
               <b>Figure.</b> 10-year minus 3-month Treasury spread, monthly, 1962–2025, percentage points. Shaded:
-              NBER recessions. Blue: inversions. This is also the line drawn under my name at the top of the page.
+              NBER recessions. Blue: inversions.
               Data: FRED (GS10, TB3MS, USREC).
             </figcaption>
           </figure>
@@ -354,8 +351,8 @@ function Research() {
         census study were my own questions, the second under a faculty mentor. The Penn projects were part of the{' '}
         <A href={penn.profile}>{penn.program}</A> program with {penn.mentors}.
       </p>
-      {research.map((s, i) => (
-        <Study key={s.id} s={s} index={i + 1} />
+      {research.map((s) => (
+        <Study key={s.id} s={s} />
       ))}
     </Section>
   );
@@ -502,7 +499,7 @@ function Projects() {
                 {p.see && (
                   <>
                     {' '}
-                    <A href={p.see}>See §1.{research.findIndex((r) => `#${r.id}` === p.see) + 1}&nbsp;→</A>
+                    <A href={p.see}>See Research&nbsp;→</A>
                   </>
                 )}
               </p>
@@ -525,7 +522,6 @@ function Desk() {
       <div className="frame desk-grid">
         <div id="writing" className="desk-col">
           <header className="desk-head">
-            <span className="label sec-no">§ 6</span>
             <h2>Writing &amp; talks</h2>
           </header>
           <ol className="ledger compact">
@@ -566,7 +562,6 @@ function Desk() {
 
         <div id="news" className="desk-col">
           <header className="desk-head">
-            <span className="label sec-no">§ 7</span>
             <h2>News</h2>
           </header>
           <ol className="ledger compact">
@@ -615,7 +610,6 @@ function Skills() {
 }
 
 function Contact() {
-  const [loaded, setLoaded] = useState(false);
   const [copied, setCopied] = useState(false);
   const copy = async () => {
     try {
@@ -657,20 +651,6 @@ function Contact() {
         <dt>Based in</dt>
         <dd>{person.city}</dd>
       </dl>
-
-      <details
-        id="intermission"
-        className="intermission sub"
-        onToggle={(e) => e.currentTarget.open && setLoaded(true)}
-      >
-        <summary>Intermission: a small game, kept from an earlier version of this site</summary>
-        <p className="meta">Space or tap to jump. It doesn’t keep score between visits.</p>
-        {loaded && (
-          <div className="game-frame">
-            <iframe title="Dinosaur runner game" src="/game/index.html" loading="lazy" />
-          </div>
-        )}
-      </details>
     </Section>
   );
 }

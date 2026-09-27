@@ -417,7 +417,6 @@ summary:focus-visible,
   color: var(--ink-3);
 }
 
-.kbd-btn,
 .theme-toggle,
 .linklike {
   font: inherit;
@@ -426,34 +425,6 @@ summary:focus-visible,
   padding: var(--s2) 0;
   cursor: pointer;
   color: var(--ink-3);
-}
-
-.kbd-btn {
-  display: none;
-  gap: 3px;
-}
-
-kbd {
-  font-family: var(--sans);
-  font-size: 0.6875rem;
-  line-height: 1;
-  padding: 0.25em 0.45em 0.2em;
-  border: 1px solid var(--rule-strong);
-  border-bottom-width: 2px;
-  border-radius: 3px;
-  color: var(--ink-2);
-  background: var(--paper);
-  transition: color var(--fast), border-color var(--fast), transform var(--fast);
-}
-
-.kbd-btn:hover kbd {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.kbd-btn:active kbd {
-  transform: translateY(1px);
-  border-bottom-width: 1px;
 }
 
 .theme-toggle {
@@ -506,9 +477,6 @@ kbd {
     padding-left: var(--s5);
     border-left: 1px solid var(--rule);
     align-self: center;
-  }
-  .kbd-btn {
-    display: inline-flex;
   }
 }
 
@@ -946,12 +914,6 @@ kbd {
   font-variation-settings: 'opsz' 48;
 }
 
-.section-head .sec-no {
-  display: block;
-  margin-bottom: var(--s1);
-  color: var(--accent);
-}
-
 .section-intro {
   color: var(--ink-2);
   margin-bottom: var(--s7);
@@ -981,9 +943,6 @@ kbd {
     display: flex;
     align-items: baseline;
     gap: var(--s3);
-  }
-  .section-head .sec-no {
-    margin: 0;
   }
   .section-head h2 {
     font-size: 1.75rem;
@@ -1020,10 +979,6 @@ kbd {
   display: flex;
   flex-wrap: wrap;
   gap: 0 var(--s4);
-}
-
-.study-meta .tnum {
-  color: var(--accent);
 }
 
 .study h3 {
@@ -1558,56 +1513,6 @@ kbd {
   overflow-wrap: anywhere;
 }
 
-/* ---------- the game ---------- */
-
-.intermission {
-  scroll-margin-top: var(--s5);
-  padding-top: var(--s5);
-  border-top: 1px dashed var(--rule-strong);
-}
-
-.intermission summary {
-  cursor: pointer;
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  color: var(--ink-2);
-  list-style: none;
-  padding-block: var(--s2);
-}
-
-.intermission summary:hover {
-  color: var(--accent);
-}
-
-.intermission summary::-webkit-details-marker {
-  display: none;
-}
-
-.intermission summary::before {
-  content: '+';
-  display: inline-block;
-  width: 1.1em;
-  color: var(--accent);
-  transition: transform 240ms var(--ease-out);
-}
-
-.intermission[open] summary::before {
-  transform: rotate(45deg);
-}
-
-.game-frame {
-  margin-top: var(--s4);
-  border: 1px solid var(--rule);
-  background: #fff;
-}
-
-.game-frame iframe {
-  display: block;
-  width: 100%;
-  aspect-ratio: 16 / 9;
-  border: 0;
-}
-
 /* ---------- command palette ---------- */
 
 .palette-scrim {
@@ -1964,10 +1869,6 @@ a.quiet:hover {
   font-weight: 400;
 }
 
-.desk-head .sec-no {
-  color: var(--accent);
-}
-
 .desk .ledger > li {
   grid-template-columns: 6.5rem minmax(0, 1fr);
   column-gap: var(--s4);
@@ -2113,21 +2014,6 @@ a.quiet:hover {
   letter-spacing: -0.012em;
 }
 
-/* Accent as a rule, not a fill: the active nav item and the lead entries. */
-.study.is-lead {
-  border-top-color: var(--rule);
-}
-
-.study.is-lead .study-meta .tnum::before {
-  content: '';
-  display: inline-block;
-  width: 1.25rem;
-  height: 2px;
-  margin-right: 0.45rem;
-  vertical-align: 0.28em;
-  background: var(--accent);
-}
-
 /* ---------- print: the home page doubles as a one-page summary ---------- */
 
 @media print {
@@ -2148,7 +2034,6 @@ a.quiet:hover {
   }
   .nav,
   .masthead-tools,
-  .intermission,
   .chart-readout,
   .skip,
   .portrait,

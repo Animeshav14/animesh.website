@@ -11,13 +11,10 @@ export default function NotFound() {
       <div className="row not-found">
         <p className="label section-head">Error 404</p>
         <div>
-          <h1 className="nf-title">
-            No observations at <code>{pathname}</code>
-          </h1>
+          <h1 className="nf-title">Page not found</h1>
           <p className="muted nf-body">
-            This page isn’t in the sample. It may have moved when the site was rebuilt. The research, CV, and
-            everything else are on the <Link to="/">home page</Link>, or press <kbd>Ctrl</kbd> <kbd>K</kbd> to jump
-            somewhere directly.
+            Nothing lives at <code>{pathname}</code>. The research, CV, and everything else are on the{' '}
+            <Link to="/">home page</Link>.
           </p>
         </div>
       </div>

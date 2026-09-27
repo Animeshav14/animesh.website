@@ -15,11 +15,9 @@ const sections = [
 export default function Navigation({ openPalette }) {
   const { pathname } = useLocation();
   const [theme, setTheme] = useState('light');
-  const [mac, setMac] = useState(false);
 
   useEffect(() => {
     setTheme(currentTheme());
-    setMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
     const onChange = () => setTheme(currentTheme());
     window.addEventListener('themechange', onChange);
     const mq = window.matchMedia('(prefers-color-scheme: dark)');
@@ -43,10 +41,6 @@ export default function Navigation({ openPalette }) {
           <a className="tools-cv" href={person.cv} target="_blank" rel="noopener">
             CV
           </a>
-          <button type="button" className="kbd-btn" onClick={openPalette} aria-label="Open command menu">
-            <kbd>{mac ? '⌘' : 'Ctrl'}</kbd>
-            <kbd>K</kbd>
-          </button>
           <button
             type="button"
             className="theme-toggle"

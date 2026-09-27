@@ -1,6 +1,6 @@
 import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { person, research, projects, questions } from '../content.js';
+import { person } from '../content.js';
 import { toggleTheme } from '../theme.js';
 
 // Ctrl/⌘ K. A shortcut layer over the normal navigation, never a replacement.
@@ -28,10 +28,6 @@ export default function CommandPalette({ open, setOpen }) {
   };
 
   const commands = useMemo(() => {
-    const entries = [
-      ...research.map((r) => ({ id: r.id, title: r.title })),
-      ...projects.flatMap((g) => g.items).filter((p) => p.id).map((p) => ({ id: p.id, title: p.title })),
-    ];
     return [
       { group: 'Go to', label: 'Research', run: () => go('#research') },
       { group: 'Go to', label: 'Experience', run: () => go('#experience') },
@@ -59,32 +55,6 @@ export default function CommandPalette({ open, setOpen }) {
       },
       { group: 'Open', label: 'GitHub', hint: 'github.com/Animeshav14', run: () => window.open(person.github, '_blank', 'noopener') },
       { group: 'Open', label: 'LinkedIn', run: () => window.open(person.linkedin, '_blank', 'noopener') },
-      {
-        group: 'Wander',
-        label: 'Current questions',
-        hint: `${questions.length} of them`,
-        run: () => go('#questions'),
-      },
-      {
-        group: 'Wander',
-        label: 'Random project',
-        run: () => {
-          const pick = entries[Math.floor(Math.random() * entries.length)];
-          go('#' + pick.id);
-        },
-      },
-      { group: 'Wander', label: 'Read the line under my name', run: () => go('#yield-curve') },
-      {
-        group: 'Wander',
-        label: 'Play the game',
-        run: () => {
-          go('#intermission');
-          setTimeout(() => {
-            const d = document.getElementById('intermission');
-            if (d) d.open = true;
-          }, 60);
-        },
-      },
       { group: 'Settings', label: 'Switch light / dark', run: () => toggleTheme() },
     ];
   }, []);

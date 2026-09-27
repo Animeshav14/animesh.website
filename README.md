@@ -21,7 +21,6 @@ src/data/             the Treasury spread series used by the charts
 src/components/       page sections, the charts, the command menu
 src/index.css         the whole stylesheet; colors, type, and spacing are variables at the top
 public/assets/        CV, portrait, research poster
-public/game/          the small runner game at the bottom of the home page
 ```
 
 To update the site, edit `src/content.js`. To update the CV, replace `public/assets/Animesh_CV.pdf` and keep the file name. The site links to that path, and `/cv` serves the same file.
@@ -33,7 +32,7 @@ To update the site, edit `src/content.js`. To update the CV, replace `public/ass
 - Plain CSS, no framework
 - Newsreader and IBM Plex Sans, loaded from Google Fonts
 
-There are no animation or UI libraries. The interactive parts are the charts, the command menu, and the theme toggle, all written by hand.
+There are no animation or UI libraries. The interactive parts are the charts, the command menu, and the theme toggle.
 
 ## The line under my name
 
@@ -43,10 +42,9 @@ The line across the top of the home page is the 10-year minus 3-month Treasury s
 
 ## Other details
 
-- Ctrl+K (⌘K on a Mac) opens a command menu for jumping to sections, opening the CV, or copying my email.
+- Ctrl+K (⌘K on a Mac), or the "Command menu" button in the footer, opens a menu for jumping to sections, opening the CV, or copying my email.
 - Light and dark themes follow the system setting until you pick one. The choice is saved in `localStorage` and applied before first paint.
 - With reduced motion on, the line's draw-in and the smooth scrolling are turned off.
-- The game's iframe loads only when you open it.
 
 ## Deployment
 

@@ -11,7 +11,7 @@ export default function Blogs() {
       <div className="row page-head">
         <p className="label section-head">Writing</p>
         <div>
-          <h1>Things I have written</h1>
+          <h1>Writing</h1>
           <p>
             A policy article from my internship at the Nepal Economic Forum, a research paper, and a short research
             memo. Longer research is described on the <Link to={{ pathname: '/', hash: '#research' }}>home page</Link>.
