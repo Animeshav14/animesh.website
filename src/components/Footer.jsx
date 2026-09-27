@@ -13,7 +13,7 @@ export default function Footer({ openPalette }) {
         </p>
         <div>
           <p>
-            Set in Newsreader and IBM Plex Sans. Built with React and Vite; the{' '}
+            Built with React and Vite; the{' '}
             <a href="https://github.com/Animeshav14/animesh.website">source is on GitHub</a>. Last updated {person.updated}.
           </p>
         </div>
