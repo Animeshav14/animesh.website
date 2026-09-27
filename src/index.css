@@ -1,13 +1,9 @@
 /* ------------------------------------------------------------------
    Design system
-   Two faces with separate jobs. Newsreader, a serif with optical sizes,
-   is the editorial voice: the name, headings, titles, the opening line,
-   the research questions. IBM Plex Sans carries everything you read or
-   scan: body copy, metadata, dates, navigation.
-   One accent, cobalt, for links, active states, and the months the
-   yield curve was inverted. Neutrals are cool-leaning, not cream. Spacing on a 4px base. The page is a margin column and
-   a text column, plus a note column on wide screens, like a book with
-   side notes.
+   Newsreader for headings, titles, and a few editorial lines; IBM Plex
+   Sans for body copy, metadata, and interface text. One accent, cobalt.
+   Spacing on a 4px base. The page is a margin column and a text column,
+   plus a note column on wide screens.
 ------------------------------------------------------------------- */
 
 :root {
@@ -177,7 +173,6 @@ abbr[title] {
   color: var(--paper);
 }
 
-/* Theme change: a short cross-fade when the browser supports it. */
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation-duration: 260ms;
@@ -209,6 +204,16 @@ summary:focus-visible,
   outline: 2px solid var(--accent);
   outline-offset: 3px;
   border-radius: 1px;
+}
+
+a.quiet {
+  color: var(--ink);
+  text-decoration-color: var(--rule-strong);
+}
+
+a.quiet:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
 }
 
 .ext::after {
@@ -270,6 +275,10 @@ summary:focus-visible,
   color: var(--ink-2);
 }
 
+.nowrap {
+  white-space: nowrap;
+}
+
 /* ---------- page frame ---------- */
 
 .frame {
@@ -310,7 +319,9 @@ summary:focus-visible,
   }
 }
 
-.section-body.wide > :not(.study) {
+/* Wide sections span the text and note columns; ordinary blocks inside
+   them still keep to the reading measure. */
+.section-body.wide > :not(.study):not(.sub):not(.big-email) {
   max-width: var(--measure);
 }
 
@@ -380,7 +391,6 @@ summary:focus-visible,
   white-space: nowrap;
 }
 
-/* A hairline that draws in from the left. */
 .nav a::after {
   content: '';
   position: absolute;
@@ -417,6 +427,15 @@ summary:focus-visible,
   color: var(--ink-3);
 }
 
+.tools-cv {
+  color: var(--accent);
+  font-family: var(--sans);
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-decoration: none;
+  padding: var(--s2) 0;
+}
+
 .theme-toggle,
 .linklike {
   font: inherit;
@@ -440,7 +459,6 @@ summary:focus-visible,
   color: var(--accent);
 }
 
-/* A half-filled disc that turns over with the theme. */
 .theme-glyph {
   width: 0.75rem;
   height: 0.75rem;
@@ -478,6 +496,9 @@ summary:focus-visible,
     border-left: 1px solid var(--rule);
     align-self: center;
   }
+  .tools-cv {
+    display: none;
+  }
 }
 
 @media (max-width: 59.99rem) {
@@ -501,6 +522,9 @@ summary:focus-visible,
   }
   .nav a:last-child {
     margin-right: var(--s6);
+  }
+  .nav .nav-cv {
+    display: none;
   }
 }
 
@@ -541,7 +565,8 @@ summary:focus-visible,
   }
 }
 
-/* The horizon: full-bleed, under the name. */
+/* ---------- horizon ---------- */
+
 .horizon {
   margin-top: var(--s5);
 }
@@ -658,12 +683,18 @@ summary:focus-visible,
   font-size: 0.75rem;
 }
 
+.h-legend-items {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0 var(--s4);
+}
+
 .h-key-inv,
 .h-key-rec {
   display: inline-block;
   width: 0.7rem;
   height: 0.55rem;
-  margin: 0 0.3em 0 0.9em;
+  margin: 0 0.3em 0 0;
 }
 
 .h-key-inv {
@@ -688,7 +719,8 @@ summary:focus-visible,
   padding-top: var(--s6);
 }
 
-/* Below the horizon: margin notes, text, portrait. */
+/* ---------- intro body: margin notes, text, portrait ---------- */
+
 .intro-grid {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 6.5rem;
@@ -720,12 +752,8 @@ summary:focus-visible,
   margin-top: var(--s1);
 }
 
-.intro .lede {
-  font-size: 1.1875rem;
-  line-height: 1.6;
-}
-
 .intro .lede:first-child {
+  font-family: var(--serif);
   font-size: clamp(1.3125rem, 1.2rem + 0.4vw, 1.5rem);
   line-height: 1.45;
   color: var(--ink);
@@ -733,6 +761,8 @@ summary:focus-visible,
 
 .intro .lede + .lede {
   margin-top: var(--s4);
+  font-size: 1.0625rem;
+  line-height: 1.7;
   color: var(--ink-2);
 }
 
@@ -776,6 +806,7 @@ summary:focus-visible,
 
 .portrait figcaption {
   margin-top: var(--s2);
+  font-family: var(--serif);
   font-size: 0.8125rem;
   font-style: italic;
   color: var(--ink-3);
@@ -823,7 +854,6 @@ summary:focus-visible,
   }
 }
 
-/* Questions: hanging roman numerals, italic, each a link to its entry. */
 .questions {
   grid-column: 1 / -1;
   padding-block: var(--s5) var(--s8);
@@ -840,6 +870,7 @@ summary:focus-visible,
   position: relative;
   padding-left: 2.25rem;
   margin-top: var(--s2);
+  font-family: var(--serif);
   font-style: italic;
   font-size: 1.125rem;
   line-height: 1.45;
@@ -910,13 +941,15 @@ summary:focus-visible,
 .section-head h2 {
   font-size: 1.875rem;
   font-weight: 400;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.012em;
   font-variation-settings: 'opsz' 48;
 }
 
 .section-intro {
   color: var(--ink-2);
   margin-bottom: var(--s7);
+  font-size: 1.0625rem;
+  line-height: 1.65;
 }
 
 .sub {
@@ -985,23 +1018,38 @@ summary:focus-visible,
   margin-top: var(--s2);
   font-size: 1.375rem;
   font-weight: 500;
-  letter-spacing: -0.005em;
+  letter-spacing: -0.012em;
 }
 
 .study.is-lead h3 {
   font-size: clamp(1.5rem, 1.35rem + 0.4vw, 1.625rem);
   font-weight: 400;
   font-variation-settings: 'opsz' 60;
-  letter-spacing: -0.012em;
+}
+
+.study.is-minor h3 {
+  font-size: 1.1875rem;
 }
 
 .study .question {
   margin-top: var(--s3);
+  font-family: var(--serif);
+  font-size: 1.1875rem;
+  line-height: 1.5;
   color: var(--ink-2);
 }
 
 .study.is-lead .question {
-  font-size: 1.1875rem;
+  font-size: 1.3125rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.study.is-minor p:not(.meta) {
+  margin-top: var(--s2);
+  font-size: 1rem;
+  line-height: 1.6;
+  color: var(--ink-2);
 }
 
 .facts {
@@ -1010,7 +1058,7 @@ summary:focus-visible,
   grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: var(--s2) var(--s4);
   font-size: 1rem;
-  line-height: 1.55;
+  line-height: 1.6;
 }
 
 .facts dt {
@@ -1021,6 +1069,10 @@ summary:focus-visible,
   text-transform: uppercase;
   color: var(--ink-3);
   padding-top: 0.3em;
+}
+
+.facts dd {
+  color: var(--ink);
 }
 
 @media (max-width: 30rem) {
@@ -1047,17 +1099,6 @@ summary:focus-visible,
   padding-block: var(--s1);
 }
 
-.study.is-minor h3 {
-  font-size: 1.1875rem;
-}
-
-.study.is-minor p:not(.meta) {
-  margin-top: var(--s2);
-  font-size: 1rem;
-  color: var(--ink-2);
-}
-
-/* Arriving at an entry from a link: its title catches a brief highlight. */
 .arrived h3,
 .arrived h2,
 .arrived h4 {
@@ -1076,9 +1117,8 @@ summary:focus-visible,
   }
 }
 
-/* Side notes: formulas beside an entry. */
 .note {
-  font-size: 0.9375rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--ink-2);
 }
@@ -1121,33 +1161,13 @@ summary:focus-visible,
   padding-block: var(--s1);
 }
 
-.math sub,
-.math sup {
-  font-size: 0.66em;
-  line-height: 0;
-}
-
-.math sup + sub {
-  margin-left: -0.55em;
-}
-
-.math .big {
-  font-size: 1.35em;
-  vertical-align: -0.1em;
-  margin-right: 0.05em;
-}
-
-.math .op {
-  margin-inline: 0.25em;
-}
-
 .figure {
   margin-top: var(--s5);
 }
 
 .figure figcaption {
   margin-top: var(--s2);
-  font-size: 0.875rem;
+  font-size: 0.8125rem;
   line-height: 1.45;
   color: var(--ink-3);
 }
@@ -1176,7 +1196,6 @@ summary:focus-visible,
   transform: scale(1.025);
 }
 
-/* Yield-curve chart */
 .chart {
   position: relative;
   font-family: var(--sans);
@@ -1194,6 +1213,12 @@ summary:focus-visible,
   font-size: 11px;
   fill: var(--ink-3);
   font-variant-numeric: tabular-nums;
+}
+
+@media (max-width: 36rem) {
+  .chart .axis text {
+    font-size: 15px;
+  }
 }
 
 .chart .grid line {
@@ -1277,19 +1302,11 @@ summary:focus-visible,
   font-weight: 500;
 }
 
-.ledger h4 .org {
-  font-weight: 400;
-  color: var(--ink-2);
-}
-
 .ledger .body {
   margin-top: var(--s1);
   font-size: 1rem;
+  line-height: 1.6;
   color: var(--ink-2);
-}
-
-.ledger .body + .meta {
-  margin-top: var(--s1);
 }
 
 .ledger .see {
@@ -1306,8 +1323,16 @@ summary:focus-visible,
   padding-top: 0;
 }
 
+/* After the compact rule: same specificity, so order decides. */
+.ledger > li.ledger-divider {
+  display: block;
+  padding-block: var(--s5) var(--s2);
+  border-bottom: 1px solid var(--rule);
+}
+
 .ledger.compact p {
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 .ledger.compact .src {
@@ -1320,11 +1345,54 @@ summary:focus-visible,
   margin-top: var(--s3);
 }
 
+/* Experience: a three-column register on wide screens. */
+.ledger.xp .xp-who .org {
+  font-size: 1rem;
+  color: var(--ink-2);
+  line-height: 1.4;
+}
+
+.ledger.xp .xp-who .meta {
+  margin-top: var(--s1);
+}
+
+.ledger.xp .body {
+  margin-top: var(--s2);
+}
+
+@media (min-width: 36rem) {
+  .ledger.xp .body {
+    grid-column: 2;
+  }
+}
+
+@media (min-width: 72rem) {
+  .ledger.xp > li {
+    grid-template-columns: 8.5rem minmax(0, 17rem) minmax(0, 1fr);
+    column-gap: var(--s6);
+    padding-block: var(--s5);
+  }
+  .ledger.xp .body {
+    grid-column: 3;
+    margin-top: 0;
+    padding-top: 0.1rem;
+  }
+  .ledger.xp .when,
+  .ledger.xp .xp-who,
+  .ledger.xp .body {
+    grid-row: 1;
+  }
+  .ledger.xp > li:first-child {
+    padding-top: 0;
+  }
+}
+
 /* ---------- education ---------- */
 
 .degree h3 {
   font-size: 1.5rem;
   font-weight: 400;
+  letter-spacing: -0.012em;
 }
 
 .degree p {
@@ -1358,7 +1426,7 @@ summary:focus-visible,
 
 .course-table li {
   font-size: 1rem;
-  line-height: 1.4;
+  line-height: 1.6;
   padding-block: 0.22rem;
 }
 
@@ -1375,6 +1443,7 @@ summary:focus-visible,
 
 .honors li {
   font-size: 1rem;
+  line-height: 1.6;
   padding-block: 0.22rem;
 }
 
@@ -1384,6 +1453,7 @@ summary:focus-visible,
 
 .honors-line {
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 /* ---------- leadership ---------- */
@@ -1391,6 +1461,7 @@ summary:focus-visible,
 .org-title {
   font-size: 1.5rem;
   font-weight: 400;
+  letter-spacing: -0.012em;
 }
 
 .org-title + .meta {
@@ -1424,10 +1495,12 @@ summary:focus-visible,
 .project p {
   margin-top: var(--s1);
   font-size: 1rem;
+  line-height: 1.6;
   color: var(--ink-2);
 }
 
-.project .stack {
+.project p.stack {
+  font-size: 0.8125rem;
   color: var(--ink-3);
 }
 
@@ -1438,6 +1511,7 @@ summary:focus-visible,
   grid-template-columns: minmax(0, 1fr);
   gap: 0 var(--s5);
   font-size: 1rem;
+  line-height: 1.6;
 }
 
 @media (min-width: 36rem) {
@@ -1479,6 +1553,7 @@ summary:focus-visible,
   padding-left: var(--s5);
   margin-top: var(--s2);
   font-size: 1rem;
+  line-height: 1.6;
   color: var(--ink-2);
 }
 
@@ -1489,17 +1564,107 @@ summary:focus-visible,
   color: var(--ink-3);
 }
 
+/* ---------- writing, talks, and news ---------- */
+
+.desk-grid {
+  display: grid;
+  gap: var(--s8) var(--s7);
+}
+
+@media (min-width: 60rem) {
+  .desk-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+.desk-col {
+  scroll-margin-top: var(--s5);
+}
+
+.desk-head {
+  display: flex;
+  align-items: baseline;
+  gap: var(--s3);
+  padding-bottom: var(--s3);
+  margin-bottom: var(--s4);
+  border-bottom: 1px solid var(--ink);
+}
+
+.desk-head h2 {
+  font-size: 1.5rem;
+  font-weight: 400;
+  letter-spacing: -0.012em;
+}
+
+.desk .ledger > li {
+  grid-template-columns: 6.5rem minmax(0, 1fr);
+  column-gap: var(--s4);
+}
+
+@media (max-width: 30rem) {
+  .desk .ledger > li {
+    grid-template-columns: minmax(0, 1fr);
+  }
+}
+
 /* ---------- contact ---------- */
 
 .contact-lede {
   margin-bottom: var(--s5);
+  font-size: 1.0625rem;
+  line-height: 1.65;
+}
+
+.big-email {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  gap: var(--s2) var(--s4);
+  margin-bottom: var(--s6);
+  font-family: var(--serif);
+  font-size: clamp(1.75rem, 1rem + 3.4vw, 3.75rem);
+  font-weight: 300;
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  font-variation-settings: 'opsz' 72;
+}
+
+.big-email a {
+  color: var(--ink);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.12em;
+  text-decoration-color: var(--rule-strong);
+  overflow-wrap: anywhere;
+}
+
+.big-email a:hover {
+  color: var(--accent);
+  text-decoration-color: currentColor;
+}
+
+.copy {
+  font-family: var(--sans);
+  font-size: 0.8125rem;
+  letter-spacing: 0.02em;
+  color: var(--ink-3);
+  background: none;
+  border: 1px solid var(--rule-strong);
+  border-radius: 999px;
+  padding: 0.3rem 0.8rem;
+  cursor: pointer;
+  transition: color var(--fast), border-color var(--fast);
+}
+
+.copy:hover {
+  color: var(--accent);
+  border-color: var(--accent);
 }
 
 .contact-list {
   display: grid;
   grid-template-columns: 6.5rem minmax(0, 1fr);
   gap: var(--s2) var(--s4);
-  font-size: 1.0625rem;
+  font-size: 1rem;
 }
 
 .contact-list dt {
@@ -1555,7 +1720,6 @@ summary:focus-visible,
 
 .palette-input {
   font: inherit;
-  font-family: var(--sans);
   font-size: 1.0625rem;
   color: var(--ink);
   background: transparent;
@@ -1668,7 +1832,7 @@ summary:focus-visible,
   margin-top: var(--s2);
 }
 
-/* ---------- writing page & 404 ---------- */
+/* ---------- writing page and 404 ---------- */
 
 .page-head {
   padding-block: var(--s8) var(--s6);
@@ -1685,6 +1849,8 @@ summary:focus-visible,
 
 .page-head h1 + p {
   margin-top: var(--s4);
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--ink-2);
 }
 
@@ -1705,6 +1871,8 @@ summary:focus-visible,
 
 .essay p:not(.meta) {
   margin-top: var(--s2);
+  font-size: 1.0625rem;
+  line-height: 1.65;
   color: var(--ink-2);
 }
 
@@ -1713,308 +1881,14 @@ summary:focus-visible,
   min-height: 60vh;
 }
 
-.nf-title code {
-  font-family: var(--serif);
-  font-style: italic;
-  font-size: 1em;
-  color: var(--accent);
-  overflow-wrap: anywhere;
-}
-
 .nf-body {
   margin-top: var(--s5);
   max-width: var(--measure);
-}
-
-.nowrap {
-  white-space: nowrap;
-}
-
-.h-legend-items {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0 var(--s4);
-}
-
-.h-key-inv,
-.h-key-rec {
-  margin-left: 0 !important;
-}
-
-.tools-cv {
-  color: var(--accent);
-  font-family: var(--sans);
-  font-size: 0.875rem;
-  font-weight: 500;
-  text-decoration: none;
-  padding: var(--s2) 0;
-}
-
-@media (min-width: 60rem) {
-  .tools-cv {
-    display: none;
-  }
-}
-
-@media (max-width: 59.99rem) {
-  .nav .nav-cv {
-    display: none;
-  }
-}
-
-@media (max-width: 36rem) {
-  .chart .axis text {
-    font-size: 15px;
-  }
-}
-
-.ledger > li.ledger-divider {
-  display: block;
-  padding-block: var(--s5) var(--s2);
-  border-bottom: 1px solid var(--rule);
-}
-
-/* ---------- quiet links: titles in lists read as text until touched ---------- */
-
-a.quiet {
-  color: var(--ink);
-  text-decoration-color: var(--rule-strong);
-}
-
-a.quiet:hover {
-  color: var(--accent);
-  text-decoration-color: currentColor;
-}
-
-.project p.stack {
-  font-size: 0.8125rem;
-}
-
-/* ---------- experience: a three-column register on wide screens ---------- */
-
-.ledger.xp .xp-who .org {
-  font-size: 1rem;
-  color: var(--ink-2);
-  line-height: 1.4;
-}
-
-.ledger.xp .xp-who .meta {
-  margin-top: var(--s1);
-}
-
-.ledger.xp .body {
-  margin-top: var(--s2);
-}
-
-@media (min-width: 36rem) {
-  .ledger.xp .body {
-    grid-column: 2;
-  }
-}
-
-@media (min-width: 72rem) {
-  .ledger.xp > li {
-    grid-template-columns: 8.5rem minmax(0, 17rem) minmax(0, 1fr);
-    column-gap: var(--s6);
-    padding-block: var(--s5);
-  }
-  .ledger.xp .body {
-    grid-column: 3;
-    margin-top: 0;
-    padding-top: 0.1rem;
-  }
-  .ledger.xp .when,
-  .ledger.xp .xp-who,
-  .ledger.xp .body {
-    grid-row: 1;
-  }
-  .ledger.xp > li:first-child {
-    padding-top: 0;
-  }
-}
-
-/* The register fills the text and note columns together. */
-.section-body.wide > .sub {
-  max-width: none;
-}
-
-/* ---------- the desk: writing and news side by side ---------- */
-
-.desk-grid {
-  display: grid;
-  gap: var(--s8) var(--s7);
-}
-
-@media (min-width: 60rem) {
-  .desk-grid {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-.desk-col {
-  scroll-margin-top: var(--s5);
-}
-
-.desk-head {
-  display: flex;
-  align-items: baseline;
-  gap: var(--s3);
-  padding-bottom: var(--s3);
-  margin-bottom: var(--s4);
-  border-bottom: 1px solid var(--ink);
-}
-
-.desk-head h2 {
-  font-size: 1.5rem;
-  font-weight: 400;
-}
-
-.desk .ledger > li {
-  grid-template-columns: 6.5rem minmax(0, 1fr);
-  column-gap: var(--s4);
-}
-
-@media (max-width: 30rem) {
-  .desk .ledger > li {
-    grid-template-columns: minmax(0, 1fr);
-  }
-}
-
-/* ---------- contact ---------- */
-
-.big-email {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: baseline;
-  gap: var(--s2) var(--s4);
-  margin-bottom: var(--s6);
-  font-size: clamp(1.75rem, 1rem + 3.4vw, 3.75rem);
-  font-weight: 300;
-  line-height: 1.1;
-  letter-spacing: -0.02em;
-  font-variation-settings: 'opsz' 72;
-}
-
-.big-email a {
-  color: var(--ink);
-  text-decoration-thickness: 1px;
-  text-underline-offset: 0.12em;
-  text-decoration-color: var(--rule-strong);
-  overflow-wrap: anywhere;
-}
-
-.big-email a:hover {
-  color: var(--accent);
-  text-decoration-color: currentColor;
-}
-
-.copy {
-  font-family: var(--sans);
-  font-size: 0.8125rem;
-  letter-spacing: 0.02em;
-  color: var(--ink-3);
-  background: none;
-  border: 1px solid var(--rule-strong);
-  border-radius: 999px;
-  padding: 0.3rem 0.8rem;
-  cursor: pointer;
-  transition: color var(--fast), border-color var(--fast);
-}
-
-.copy:hover {
-  color: var(--accent);
-  border-color: var(--accent);
-}
-
-.section-body.wide > .big-email {
-  max-width: none;
-}
-
-/* ---------- type roles ----------
-   Serif: the editorial layer (name, headings, titles, the opening line,
-   research questions, captions, the email). Sans: everything else.
-   Plex has a larger x-height than Newsreader, so sans sizes sit a step
-   below where the serif was. */
-
-.intro .lede:first-child,
-.questions li,
-.study .question,
-.big-email,
-.portrait figcaption,
-.ledger h4,
-.project h4,
-.degree h3,
-.org-title,
-.essay h2 {
-  font-family: var(--serif);
-}
-
-.intro .lede + .lede {
-  font-size: 1.0625rem;
-  line-height: 1.7;
-}
-
-.study .question {
-  font-size: 1.1875rem;
-  line-height: 1.5;
-  color: var(--ink-2);
-}
-
-.study.is-lead .question {
-  font-size: 1.3125rem;
-  line-height: 1.45;
-  color: var(--ink);
-}
-
-.section-intro,
-.contact-lede,
-.essay p:not(.meta),
-.page-head h1 + p,
-.nf-body {
   font-size: 1.0625rem;
   line-height: 1.65;
 }
 
-.facts,
-.ledger .body,
-.ledger.compact p,
-.project p,
-.course-table li,
-.honors li,
-.honors-line,
-.skills,
-.plain-list li,
-.study.is-minor p:not(.meta) {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.facts dd {
-  color: var(--ink);
-}
-
-.note {
-  font-size: 0.875rem;
-}
-
-.contact-list {
-  font-size: 1rem;
-}
-
-.figure figcaption {
-  font-size: 0.8125rem;
-}
-
-/* Titles in the serif get slightly tighter tracking as they grow. */
-.study h3,
-.degree h3,
-.org-title,
-.desk-head h2,
-.section-head h2 {
-  letter-spacing: -0.012em;
-}
-
-/* ---------- print: the home page doubles as a one-page summary ---------- */
+/* ---------- print ---------- */
 
 @media print {
   :root,
