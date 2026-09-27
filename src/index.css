@@ -32,7 +32,7 @@
   --s8: 4.5rem;
   --s9: 6.5rem;
 
-  --measure: 38rem;
+  --measure: 36rem;
   --margin-col: 10.5rem;
   --note-col: 15rem;
   --gutter: clamp(1.25rem, 5vw, 3rem);
@@ -105,8 +105,8 @@ body {
   background: var(--paper);
   color: var(--ink);
   font-family: var(--font);
-  font-size: 1.0625rem;
-  line-height: 1.62;
+  font-size: 1.125rem;
+  line-height: 1.6;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -285,7 +285,7 @@ a.quiet:hover {
 }
 
 .meta {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.5;
   color: var(--ink-3);
 }
@@ -389,7 +389,7 @@ a.quiet:hover {
   display: flex;
   align-items: baseline;
   gap: 0 var(--s5);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .nav a {
@@ -441,7 +441,7 @@ a.quiet:hover {
   min-height: 24px;
   color: var(--accent);
   font-family: var(--font);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   text-decoration: none;
   padding: var(--s2) 0;
@@ -459,7 +459,7 @@ a.quiet:hover {
 
 .theme-toggle {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   display: inline-flex;
   align-items: center;
   gap: 0.45em;
@@ -653,7 +653,7 @@ a.quiet:hover {
   top: -1.75rem;
   transform: translateX(0.5rem);
   font-family: var(--font);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-variant-numeric: tabular-nums lining-nums;
   white-space: nowrap;
   color: var(--ink-2);
@@ -689,7 +689,7 @@ a.quiet:hover {
   justify-content: space-between;
   gap: var(--s1) var(--s4);
   margin-top: var(--s3);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .h-legend-items {
@@ -770,7 +770,7 @@ a.quiet:hover {
 
 .intro .lede + .lede {
   margin-top: var(--s4);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.7;
   color: var(--ink-2);
 }
@@ -782,7 +782,7 @@ a.quiet:hover {
   align-items: baseline;
   gap: var(--s1) 0;
   font-family: var(--font);
-  font-size: 0.9375rem;
+  font-size: 1rem;
 }
 
 .intro-links li:not(:last-child)::after {
@@ -797,7 +797,7 @@ a.quiet:hover {
 }
 
 .intro-links .meta {
-  font-size: 0.75rem;
+  font-size: 0.875rem;
 }
 
 .portrait img {
@@ -810,7 +810,7 @@ a.quiet:hover {
 .portrait figcaption {
   margin-top: var(--s2);
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
   line-height: 1.4;
 }
@@ -885,7 +885,7 @@ a.quiet:hover {
   top: 0.18em;
   font-family: var(--font);
   font-style: normal;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
   transition: color var(--fast);
 }
@@ -931,7 +931,7 @@ a.quiet:hover {
 .section-intro {
   color: var(--ink-2);
   margin-bottom: var(--s7);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 
@@ -993,6 +993,7 @@ a.quiet:hover {
   display: flex;
   flex-wrap: wrap;
   gap: 0 var(--s4);
+  font-size: 0.9375rem;
 }
 
 .study h3 {
@@ -1004,7 +1005,7 @@ a.quiet:hover {
 
 .study.is-lead h3 {
   font-size: clamp(1.5rem, 1.35rem + 0.4vw, 1.625rem);
-  font-weight: 400;
+  font-weight: 500;
 }
 
 .study.is-minor h3 {
@@ -1020,15 +1021,15 @@ a.quiet:hover {
 }
 
 .study.is-lead .question {
-  font-size: 1.3125rem;
-  line-height: 1.45;
+  font-size: 1.1875rem;
+  line-height: 1.5;
   color: var(--ink);
 }
 
 .study.is-minor p:not(.meta) {
   margin-top: var(--s2);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--ink-2);
 }
 
@@ -1037,8 +1038,8 @@ a.quiet:hover {
   display: grid;
   grid-template-columns: 5.5rem minmax(0, 1fr);
   gap: var(--s2) var(--s4);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
 .facts dt {
@@ -1069,7 +1070,7 @@ a.quiet:hover {
   flex-wrap: wrap;
   gap: var(--s1) var(--s5);
   font-family: var(--font);
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
 }
 
 .links a {
@@ -1096,7 +1097,7 @@ h4.arrived {
 }
 
 .note {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   line-height: 1.5;
   color: var(--ink-2);
 }
@@ -1144,7 +1145,7 @@ math,
 
 .figure figcaption {
   margin-top: var(--s2);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   line-height: 1.45;
   color: var(--ink-3);
 }
@@ -1182,14 +1183,14 @@ math,
 }
 
 .chart .axis text {
-  font-size: 11px;
+  font-size: 12px;
   fill: var(--ink-3);
   font-variant-numeric: tabular-nums lining-nums;
 }
 
 @media (max-width: 36rem) {
   .chart .axis text {
-    font-size: 15px;
+    font-size: 16px;
   }
 }
 
@@ -1232,7 +1233,7 @@ math,
 .chart-readout {
   min-height: 1.4em;
   margin-top: var(--s1);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-2);
   font-variant-numeric: tabular-nums lining-nums;
 }
@@ -1263,7 +1264,7 @@ math,
 
 .ledger .when {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-variant-numeric: tabular-nums lining-nums;
   color: var(--ink-3);
   padding-top: 0.3em;
@@ -1276,14 +1277,17 @@ math,
 
 .ledger .body {
   margin-top: var(--s1);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--ink-2);
 }
 
+/* Inline in running text: the negative margin keeps the padded hit area
+   from pushing the line apart. */
 .see {
+  margin-block: -0.3rem;
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   white-space: nowrap;
 }
 
@@ -1303,13 +1307,13 @@ math,
 }
 
 .ledger.compact p {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
 .ledger.compact .src {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
 }
 
@@ -1393,8 +1397,8 @@ math,
 }
 
 .course-table li {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   padding-block: 0.22rem;
 }
 
@@ -1408,8 +1412,8 @@ math,
 }
 
 .honors li {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   padding-block: 0.22rem;
 }
 
@@ -1418,8 +1422,8 @@ math,
 }
 
 .honors-line {
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
 /* ---------- leadership ---------- */
@@ -1460,13 +1464,13 @@ math,
 
 .project p {
   margin-top: var(--s1);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--ink-2);
 }
 
 .project p.stack {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
 }
 
@@ -1476,13 +1480,13 @@ math,
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   gap: 0 var(--s5);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
 }
 
 .skills dt {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
   padding-top: var(--s4);
 }
@@ -1514,8 +1518,8 @@ math,
   position: relative;
   padding-left: var(--s5);
   margin-top: var(--s2);
-  font-size: 1rem;
-  line-height: 1.6;
+  font-size: 1.0625rem;
+  line-height: 1.55;
   color: var(--ink-2);
 }
 
@@ -1573,7 +1577,7 @@ math,
 
 .contact-lede {
   margin-bottom: var(--s5);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 
@@ -1605,7 +1609,7 @@ math,
 
 .copy {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   letter-spacing: 0.02em;
   color: var(--ink-3);
   background: none;
@@ -1630,7 +1634,7 @@ math,
 
 .contact-list dt {
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
   padding-top: 0.25em;
 }
@@ -1681,7 +1685,7 @@ math,
 
 .palette-input {
   font: inherit;
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   color: var(--ink);
   background: transparent;
   border: 0;
@@ -1711,7 +1715,7 @@ math,
   justify-content: space-between;
   gap: var(--s4);
   padding: 0.55rem var(--s4);
-  font-size: 0.9375rem;
+  font-size: 1rem;
   color: var(--ink);
   cursor: pointer;
   border-left: 2px solid transparent;
@@ -1729,7 +1733,7 @@ math,
 
 .palette-hint {
   color: var(--ink-3);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -1744,7 +1748,7 @@ math,
 .palette-foot {
   border-top: 1px solid var(--rule);
   padding: var(--s2) var(--s4);
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   color: var(--ink-3);
 }
 
@@ -1754,7 +1758,7 @@ math,
   border-top: 1px solid var(--rule);
   padding-block: var(--s6) var(--s7);
   font-family: var(--font);
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: var(--ink-3);
   line-height: 1.65;
 }
@@ -1803,7 +1807,7 @@ math,
 
 .page-head h1 + p {
   margin-top: var(--s4);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   color: var(--ink-2);
 }
@@ -1825,7 +1829,7 @@ math,
 
 .essay p:not(.meta) {
   margin-top: var(--s2);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
   color: var(--ink-2);
 }
@@ -1839,7 +1843,7 @@ math,
 .nf-body {
   margin-top: var(--s5);
   max-width: var(--measure);
-  font-size: 1.0625rem;
+  font-size: 1.125rem;
   line-height: 1.65;
 }
 
