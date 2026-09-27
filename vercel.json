@@ -1,0 +1,6 @@
+{
+  "rewrites": [
+    { "source": "/cv", "destination": "/assets/Animesh_CV.pdf" },
+    { "source": "/(.*)", "destination": "/index.html" }
+  ]
+}

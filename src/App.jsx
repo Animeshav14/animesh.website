@@ -1,21 +1,71 @@
-import React from 'react';
-import { BrowserRouter, Routes, Route } from 'react-router-dom';
+import React, { useEffect, useLayoutEffect, useState } from 'react';
+import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Blogs from './components/Blogs.jsx';
+import NotFound from './components/NotFound.jsx';
 import Navigation from './components/Navigation.jsx';
+import Footer from './components/Footer.jsx';
+import CommandPalette from './components/CommandPalette.jsx';
 
-function App() {
+const titles = {
+  '/': 'Animesh Shrestha',
+  '/blogs': 'Writing · Animesh Shrestha',
+  '/writing': 'Writing · Animesh Shrestha',
+};
+
+// Scroll to the hash on every navigation (location.key changes even when the
+// hash does not), or to the top on a plain page change.
+function ScrollManager() {
+  const { pathname, hash, key } = useLocation();
+
+  useLayoutEffect(() => {
+    document.title = titles[pathname] || 'Not found · Animesh Shrestha';
+  }, [pathname]);
+
+  useEffect(() => {
+    if (!hash) {
+      window.scrollTo(0, 0);
+      return;
+    }
+    const id = decodeURIComponent(hash.slice(1));
+    const el = document.getElementById(id);
+    if (!el) return;
+    el.scrollIntoView({ block: 'start' });
+    el.classList.remove('arrived');
+    void el.offsetWidth;
+    el.classList.add('arrived');
+  }, [pathname, hash, key]);
+
+  return null;
+}
+
+function Shell() {
+  const [palette, setPalette] = useState(false);
+  const { pathname } = useLocation();
+  const open = () => setPalette(true);
+
   return (
-    <BrowserRouter>
-      <Navigation />
-      <Routes>
-        <Route path="/" element={<Home />} />
-        <Route path="/blogs" element={<Blogs />} />
-        <Route path="*" element={<Home />} />
-      </Routes>
-    </BrowserRouter>
+    <>
+      <ScrollManager />
+      <Navigation openPalette={open} />
+      <main id="main" key={pathname} className="page-enter">
+        <Routes>
+          <Route path="/" element={<Home />} />
+          <Route path="/blogs" element={<Blogs />} />
+          <Route path="/writing" element={<Blogs />} />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </main>
+      <Footer openPalette={open} />
+      <CommandPalette open={palette} setOpen={setPalette} />
+    </>
   );
 }
 
-export default App;
-
+export default function App() {
+  return (
+    <BrowserRouter>
+      <Shell />
+    </BrowserRouter>
+  );
+}

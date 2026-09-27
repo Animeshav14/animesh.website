@@ -1,88 +1,75 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Menu, X } from 'lucide-react';
+import { person } from '../content.js';
+import { currentTheme, toggleTheme } from '../theme.js';
 
-const navItems = [
-  { label: 'Home', href: '/#hero', type: 'anchor' },
-  { label: 'Education', href: '/#education', type: 'anchor' },
-  { label: 'Experience', href: '/#experience', type: 'anchor' },
-  { label: 'Projects', href: '/#projects', type: 'anchor' },
-  { label: 'Skills', href: '/#skills', type: 'anchor' },
-  { label: 'Blogs', href: '/blogs', type: 'route' },
-  { label: 'Contact', href: '/#contact', type: 'anchor' },
+const sections = [
+  ['Research', 'research'],
+  ['Experience', 'experience'],
+  ['Education', 'education'],
+  ['Projects', 'projects'],
+  ['News', 'news'],
+  ['Contact', 'contact'],
 ];
 
-export default function Navigation() {
-  const [menuOpen, setMenuOpen] = useState(false);
-  const location = useLocation();
+export default function Navigation({ openPalette }) {
+  const { pathname } = useLocation();
+  const [theme, setTheme] = useState('light');
+  const [mac, setMac] = useState(false);
 
-  const handleAnchorClick = (event, href) => {
-    const targetId = href.split('#')[1];
-    if (location.pathname === '/') {
-      event.preventDefault();
-      const target = document.getElementById(targetId);
-      if (target) {
-        target.scrollIntoView({ behavior: 'smooth' });
-      }
-    }
-    setMenuOpen(false);
-  };
-
-  const linkClasses = (isActive) =>
-    `px-3 py-2 rounded-full border transition-colors ${
-      isActive
-        ? 'border-cyan-400/50 text-cyan-100 bg-cyan-500/10'
-        : 'border-transparent hover:border-cyan-400/50 hover:text-cyan-100'
-    }`;
+  useEffect(() => {
+    setTheme(currentTheme());
+    setMac(/Mac|iPhone|iPad/.test(navigator.platform || navigator.userAgent));
+    const onChange = () => setTheme(currentTheme());
+    window.addEventListener('themechange', onChange);
+    const mq = window.matchMedia('(prefers-color-scheme: dark)');
+    mq.addEventListener?.('change', onChange);
+    return () => {
+      window.removeEventListener('themechange', onChange);
+      mq.removeEventListener?.('change', onChange);
+    };
+  }, []);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-50">
-      <div className="mx-auto max-w-6xl px-4 md:px-10">
-        <div className="mt-4 rounded-2xl md:rounded-full bg-black/70 border border-white/10 backdrop-blur-xl shadow-[0_10px_30px_rgba(0,0,0,0.35)]">
-          <div className="flex items-center justify-between px-4 py-3 md:px-6">
-            <Link to="/" className="font-semibold text-slate-50" onClick={() => setMenuOpen(false)}>
-              Animesh Shrestha
-            </Link>
-            <button
-              className="md:hidden inline-flex items-center gap-2 px-3 py-2 rounded-full border border-white/10 text-slate-100 hover:border-cyan-400/50"
-              onClick={() => setMenuOpen((open) => !open)}
-              aria-label="Toggle navigation"
-            >
-              {menuOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
-              <span className="text-sm">{menuOpen ? 'Close' : 'Menu'}</span>
-            </button>
-            <nav
-              className={`${
-                menuOpen ? 'flex' : 'hidden'
-              } md:flex flex-col md:flex-row flex-wrap gap-2 text-sm text-slate-200 md:items-center md:static absolute left-0 right-0 md:right-auto top-full md:top-auto px-4 pb-4 md:px-0 md:pb-0 bg-black/80 md:bg-transparent border-t md:border-0 border-white/10`}
-            >
-              {navItems.map((item) => {
-                const isActive =
-                  (item.type === 'route' && location.pathname === item.href) ||
-                  (item.type === 'anchor' && location.hash === `#${item.href.split('#')[1]}` && location.pathname === '/');
-
-                if (item.type === 'route') {
-                  return (
-                    <Link key={item.href} to={item.href} className={linkClasses(isActive)} onClick={() => setMenuOpen(false)}>
-                      {item.label}
-                    </Link>
-                  );
-                }
-
-                return (
-                  <Link
-                    key={item.href}
-                    to={item.href}
-                    className={linkClasses(isActive)}
-                    onClick={(event) => handleAnchorClick(event, item.href)}
-                  >
-                    {item.label}
-                  </Link>
-                );
-              })}
-            </nav>
-          </div>
+    <header className="masthead">
+      <a className="skip" href="#main">
+        Skip to content
+      </a>
+      <div className="frame masthead-inner">
+        <Link to="/" className="wordmark" aria-label="Animesh Shrestha, home">
+          Animesh Shrestha
+        </Link>
+        <div className="masthead-tools">
+          <a className="tools-cv" href={person.cv} target="_blank" rel="noopener">
+            CV
+          </a>
+          <button type="button" className="kbd-btn" onClick={openPalette} aria-label="Open command menu">
+            <kbd>{mac ? '⌘' : 'Ctrl'}</kbd>
+            <kbd>K</kbd>
+          </button>
+          <button
+            type="button"
+            className="theme-toggle"
+            onClick={() => setTheme(toggleTheme())}
+            aria-label={`Switch to ${theme === 'dark' ? 'light' : 'dark'} theme`}
+          >
+            <span className="theme-glyph" aria-hidden="true" />
+            {theme === 'dark' ? 'Light' : 'Dark'}
+          </button>
         </div>
+        <nav className="nav" aria-label="Sections">
+          {sections.map(([label, id]) => (
+            <Link key={id} to={{ pathname: '/', hash: `#${id}` }}>
+              {label}
+            </Link>
+          ))}
+          <Link to="/blogs" aria-current={pathname === '/blogs' || pathname === '/writing' ? 'page' : undefined}>
+            Writing
+          </Link>
+          <a className="nav-cv" href={person.cv} target="_blank" rel="noopener">
+            CV<span className="nav-cv-meta">PDF</span>
+          </a>
+        </nav>
       </div>
     </header>
   );

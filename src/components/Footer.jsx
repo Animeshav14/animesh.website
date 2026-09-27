@@ -1,11 +1,42 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
+import { person } from '../content.js';
 
-export default function Footer() {
+export default function Footer({ openPalette }) {
   return (
-    <footer className="relative mt-14">
-      <div className="absolute inset-0 bg-gradient-to-r from-[#0b1220] via-[#12172a] to-[#0f1022] opacity-90" />
-      <div className="relative z-10 max-w-6xl mx-auto px-4 md:px-10 py-8 text-center text-slate-100/90 text-base font-serif font-bold">
-        © 2025 Animesh Shrestha
+    <footer className="colophon">
+      <div className="frame">
+        <p>
+          <Link to="/">Animesh Shrestha</Link>
+          <br />
+          {person.city}
+        </p>
+        <div>
+          <p>
+            The line under my name is the gap between 10-year and 3-month U.S. Treasury yields, month by month from
+            1962 to 2025, using the FRED series from my <Link to={{ pathname: '/', hash: '#yield-curve' }}>recession-nowcasting memo</Link>. Red marks the months it
+            was inverted; shading marks NBER recessions.
+          </p>
+          <p>
+            Set in Newsreader and IBM Plex Sans. Built by hand with React and Vite; the{' '}
+            <a href="https://github.com/Animeshav14/animesh.website">source is on GitHub</a>. Last updated {person.updated}.
+          </p>
+        </div>
+        <p>
+          <a href={`mailto:${person.email}`}>{person.email}</a>
+          <br />
+          <a href={person.cv} target="_blank" rel="noopener">
+            CV
+          </a>
+          {' · '}
+          <a href={person.github}>GitHub</a>
+          {' · '}
+          <a href={person.linkedin}>LinkedIn</a>
+          <br />
+          <button type="button" className="linklike" onClick={openPalette}>
+            Command menu
+          </button>
+        </p>
       </div>
     </footer>
   );

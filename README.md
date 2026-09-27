@@ -1,36 +1,29 @@
-# Animesh Website
+# animeshshrestha.com
 
-Personal portfolio for Animesh Shrestha focused on economics, mathematics, research, finance, and data analysis.
+Personal site of Animesh Shrestha — economics and mathematics, Georgia State University.
 
-## Tech Stack
-- React + Vite
-- Tailwind-style utility classes
-- Framer Motion for animation
-- Lucide icons
+React + Vite, plain CSS, no UI or animation libraries. Deployed on Vercel.
 
-## Run It
 ```bash
 npm install
-npm run dev
-```
-Build for production:
-```bash
-npm run build
-```
-Preview the build:
-```bash
-npm run preview
+npm run dev       # http://localhost:5173
+npm run build     # outputs dist/
+npm run preview   # serve the build
 ```
 
-## Notable Sections
-- Hero with contact links, CV download, and transcript link
-- Experience (research, work, teaching, leadership)
-- Featured projects with live repo/memo links
-- Technical skills and certifications
-- Contact and starfield visual theme
+## Where things are
 
-## Project Assets
-- Public assets live under `public/assets/` (photo, CV, poster)
+| Path | What it holds |
+| --- | --- |
+| `src/content.js` | Every fact on the site: research, experience, education, writing, news. Edit this, not the components. The CV is the source of truth. |
+| `public/assets/Animesh_CV.pdf` | The CV. Replace the file (same name) to update it; `/cv` redirects here. |
+| `src/data/yieldSpread.js` | Monthly 10y–3m Treasury spread and NBER recession months, 1962–2025, from the `recession-nowcasting` repo. Drives the line under the name, the figure in §1.4, the favicon, and `public/og.png`. |
+| `src/index.css` | The design system: tokens (color, type, spacing) at the top, then components. Light/dark palettes share token names. |
+| `src/components/Horizon.jsx` | The full-width spread line under the name. Hover, touch, or arrow keys read out a month. |
+| `src/components/CommandPalette.jsx` | Ctrl/⌘ K menu. |
+| `public/game/` | The small runner game, loaded only when the "Intermission" is opened. |
+| `vercel.json` | SPA rewrites (so `/blogs` and unknown paths resolve) and the `/cv` shortcut. |
 
-## Deploy
-Build with `npm run build` and host the `dist/` folder (e.g., Vercel/Netlify/Cloudflare). Update the Git remote to your repo (suggested name: `animesh-website`). Keep environment secrets out of version control.
+## Type and color
+
+Newsreader for text and display, IBM Plex Sans for labels, dates, and navigation (both from Google Fonts). One accent — oxblood `#8a2c1d` in light mode, `#e39a7e` in dark — used for links and for the months the yield curve was inverted.
