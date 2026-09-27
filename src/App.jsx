@@ -1,4 +1,4 @@
-import React, { useEffect, useLayoutEffect, useState } from 'react';
+import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
 import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home.jsx';
 import Blogs from './components/Blogs.jsx';
@@ -14,15 +14,20 @@ const titles = {
 };
 
 // Scroll to the hash on every navigation (location.key changes even when the
-// hash does not), or to the top on a plain page change.
+// hash does not), or to the top on a plain page change. A hash present on the
+// first load jumps instantly; later jumps follow the CSS scroll-behavior,
+// which is smooth unless reduced motion is requested.
 function ScrollManager() {
   const { pathname, hash, key } = useLocation();
+  const firstLoad = useRef(true);
 
   useLayoutEffect(() => {
     document.title = titles[pathname] || 'Not found · Animesh Shrestha';
   }, [pathname]);
 
   useEffect(() => {
+    const initial = firstLoad.current;
+    firstLoad.current = false;
     if (!hash) {
       window.scrollTo(0, 0);
       return;
@@ -30,10 +35,12 @@ function ScrollManager() {
     const id = decodeURIComponent(hash.slice(1));
     const el = document.getElementById(id);
     if (!el) return;
-    el.scrollIntoView({ block: 'start' });
-    el.classList.remove('arrived');
-    void el.offsetWidth;
-    el.classList.add('arrived');
+    el.scrollIntoView({ block: 'start', behavior: initial ? 'instant' : 'auto' });
+    const title = el.matches('h1, h2, h3, h4') ? el : el.querySelector('h1, h2, h3, h4');
+    if (!title) return;
+    title.classList.remove('arrived');
+    void title.offsetWidth;
+    title.classList.add('arrived');
   }, [pathname, hash, key]);
 
   return null;
@@ -48,7 +55,7 @@ function Shell() {
     <>
       <ScrollManager />
       <Navigation openPalette={open} />
-      <main id="main" key={pathname} className="page-enter">
+      <main id="main" key={pathname}>
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/blogs" element={<Blogs />} />

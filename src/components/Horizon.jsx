@@ -1,4 +1,4 @@
-import React, { useMemo, useRef, useState } from 'react';
+import React, { useEffect, useMemo, useRef, useState } from 'react';
 import { Link } from 'react-router-dom';
 import { spread, recessions } from '../data/yieldSpread.js';
 
@@ -16,6 +16,17 @@ const n = spread.length;
 const xOf = (i) => (i / (n - 1)) * VB_W;
 const yOf = (v) => ((Y_MAX - v) / (Y_MAX - Y_MIN)) * VB_H;
 const idxOf = (ym) => spread.findIndex(([d]) => d === ym);
+
+// The draw-in plays on the first page view of a session only.
+const DRAWN_KEY = 'horizon-drawn';
+
+function alreadyDrawn() {
+  try {
+    return sessionStorage.getItem(DRAWN_KEY) === '1';
+  } catch {
+    return true;
+  }
+}
 
 function label(ym) {
   const [y, m] = ym.split('-').map(Number);
@@ -46,6 +57,16 @@ export default function Horizon({ compact = false }) {
 
   const [i, setI] = useState(null);
   const ref = useRef(null);
+  const [animate] = useState(() => !compact && !alreadyDrawn());
+
+  useEffect(() => {
+    if (!animate) return;
+    try {
+      sessionStorage.setItem(DRAWN_KEY, '1');
+    } catch {
+      /* storage unavailable: nothing to remember */
+    }
+  }, [animate]);
 
   const pick = (clientX) => {
     const r = ref.current.getBoundingClientRect();
@@ -67,7 +88,7 @@ export default function Horizon({ compact = false }) {
   const topPct = p ? (yOf(p[1]) / VB_H) * 100 : 0;
 
   return (
-    <div className={compact ? 'horizon compact' : 'horizon'}>
+    <div className={['horizon', compact && 'compact', animate && 'animate'].filter(Boolean).join(' ')}>
       <div
         ref={ref}
         className="horizon-plot"
