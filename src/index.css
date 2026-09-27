@@ -276,11 +276,11 @@ a.quiet:hover {
   font-variant-numeric: tabular-nums lining-nums;
 }
 
+/* STIX Two Text as served here has no small caps, so labels are plain
+   sentence case rather than synthesized caps. */
 .label {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--ink-3);
 }
 
@@ -430,9 +430,8 @@ a.quiet:hover {
 
 .nav-cv-meta {
   margin-left: 0.35em;
-  font-size: 0.75rem;
+  font-size: 0.875rem;
   font-weight: 400;
-  letter-spacing: 0.06em;
   color: var(--ink-3);
 }
 
@@ -551,17 +550,11 @@ a.quiet:hover {
 }
 
 .intro-name {
-  font-size: clamp(3rem, 1rem + 6.4vw, 6.5rem);
-  font-weight: 300;
-  line-height: 0.92;
-  letter-spacing: -0.035em;
-  margin-left: -0.055em;
+  font-size: clamp(2.75rem, 1rem + 6vw, 6rem);
+  font-weight: 400;
+  line-height: 0.95;
+  letter-spacing: -0.015em;
   white-space: nowrap;
-}
-
-.intro-surname {
-  font-style: italic;
-  letter-spacing: -0.025em;
 }
 
 @media (max-width: 24rem) {
@@ -818,7 +811,6 @@ a.quiet:hover {
   margin-top: var(--s2);
   font-family: var(--font);
   font-size: 0.8125rem;
-  font-style: italic;
   color: var(--ink-3);
   line-height: 1.4;
 }
@@ -1051,10 +1043,8 @@ a.quiet:hover {
 
 .facts dt {
   font-family: var(--font);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--ink-3);
   padding-top: 0.3em;
 }
@@ -1396,10 +1386,8 @@ math,
 
 .course-table h4 {
   font-family: var(--font);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.07em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--ink-3);
   margin-bottom: var(--s2);
 }
@@ -1412,10 +1400,8 @@ math,
 
 .grad {
   font-family: var(--font);
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.06em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--ink-3);
   margin-left: 0.45em;
   vertical-align: 0.2em;
@@ -1599,9 +1585,9 @@ math,
   margin-bottom: var(--s6);
   font-family: var(--font);
   font-size: clamp(1.75rem, 1rem + 3.4vw, 3.75rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.1;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .big-email a {
@@ -1714,10 +1700,8 @@ math,
 }
 
 .palette-group {
-  font-size: 0.75rem;
-  font-weight: 500;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  font-size: 0.875rem;
+  font-weight: 400;
   color: var(--ink-3);
   padding: var(--s3) var(--s4) var(--s1);
 }
@@ -1812,9 +1796,9 @@ math,
 .page-head h1,
 .nf-title {
   font-size: clamp(2.25rem, 1.6rem + 2.2vw, 3.5rem);
-  font-weight: 300;
+  font-weight: 400;
   line-height: 1.05;
-  letter-spacing: -0.02em;
+  letter-spacing: -0.01em;
 }
 
 .page-head h1 + p {

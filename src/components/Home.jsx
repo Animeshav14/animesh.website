@@ -73,7 +73,7 @@ function Intro() {
           Economics &amp; mathematics <span className="sep">/</span> Georgia State University
         </p>
         <h1 className="intro-name">
-          Animesh <span className="intro-surname">Shrestha</span>
+          Animesh Shrestha
         </h1>
       </div>
 
