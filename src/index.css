@@ -1,10 +1,8 @@
 /* ------------------------------------------------------------------
-   Design system
-   Newsreader for headings, titles, and a few editorial lines; IBM Plex
-   Sans for body copy, metadata, and interface text. One accent, cobalt, reserved for links, the active nav item, focus rings,
-   the CV link, and the inverted-spread fill.
-   Spacing on a 4px base. The page is a margin column and a text column,
-   plus a note column on wide screens.
+   One accent, cobalt, reserved for links, the active nav item, focus rings,
+   the CV link, and the inverted-spread fill. Spacing on a 4px base. The
+   page is a margin column and a text column, plus a note column on wide
+   screens.
 ------------------------------------------------------------------- */
 
 :root {
@@ -22,8 +20,7 @@
   --figure-shade: #d8d6ce;
   --scrim: rgba(27, 28, 30, 0.3);
 
-  --serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
-  --sans: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
+  --font: 'STIX Two Text', 'Georgia', 'Times New Roman', serif;
 
   --s1: 0.25rem;
   --s2: 0.5rem;
@@ -107,10 +104,9 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 1.0625rem;
   line-height: 1.62;
-  font-optical-sizing: auto;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -147,7 +143,7 @@ h1,
 h2,
 h3,
 h4 {
-  font-family: var(--serif);
+  font-family: var(--font);
   font-weight: 500;
   line-height: 1.2;
   text-wrap: balance;
@@ -160,7 +156,7 @@ dd {
 }
 
 code {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.85em;
 }
 
@@ -219,7 +215,7 @@ a.quiet:hover {
 
 .ext::after {
   content: '\2197' / '';
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.75em;
   margin-left: 0.18em;
   display: inline-block;
@@ -261,7 +257,7 @@ a.quiet:hover {
   padding: var(--s2) var(--s3);
   background: var(--ink);
   color: var(--paper);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.875rem;
   z-index: 10;
 }
@@ -276,8 +272,8 @@ a.quiet:hover {
 .meta,
 .nav,
 .tnum {
-  font-family: var(--sans);
-  font-variant-numeric: tabular-nums;
+  font-family: var(--font);
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 .label {
@@ -369,7 +365,7 @@ a.quiet:hover {
 }
 
 .wordmark {
-  font-family: var(--serif);
+  font-family: var(--font);
   font-size: 1.125rem;
   font-weight: 500;
   color: var(--ink);
@@ -445,7 +441,7 @@ a.quiet:hover {
   min-width: 24px;
   min-height: 24px;
   color: var(--accent);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.875rem;
   font-weight: 500;
   text-decoration: none;
@@ -463,7 +459,7 @@ a.quiet:hover {
 }
 
 .theme-toggle {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   display: inline-flex;
   align-items: center;
@@ -559,7 +555,6 @@ a.quiet:hover {
   font-weight: 300;
   line-height: 0.92;
   letter-spacing: -0.035em;
-  font-variation-settings: 'opsz' 72;
   margin-left: -0.055em;
   white-space: nowrap;
 }
@@ -664,9 +659,9 @@ a.quiet:hover {
   margin: 0;
   top: -1.75rem;
   transform: translateX(0.5rem);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.75rem;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
   white-space: nowrap;
   color: var(--ink-2);
   background: var(--paper);
@@ -774,7 +769,7 @@ a.quiet:hover {
 }
 
 .intro .lede:first-child {
-  font-family: var(--serif);
+  font-family: var(--font);
   font-size: clamp(1.3125rem, 1.2rem + 0.4vw, 1.5rem);
   line-height: 1.45;
   color: var(--ink);
@@ -793,7 +788,7 @@ a.quiet:hover {
   flex-wrap: wrap;
   align-items: baseline;
   gap: var(--s1) 0;
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.9375rem;
 }
 
@@ -821,7 +816,7 @@ a.quiet:hover {
 
 .portrait figcaption {
   margin-top: var(--s2);
-  font-family: var(--serif);
+  font-family: var(--font);
   font-size: 0.8125rem;
   font-style: italic;
   color: var(--ink-3);
@@ -885,7 +880,7 @@ a.quiet:hover {
   position: relative;
   padding-left: 2.25rem;
   margin-top: var(--s2);
-  font-family: var(--serif);
+  font-family: var(--font);
   font-style: italic;
   font-size: 1.125rem;
   line-height: 1.45;
@@ -896,7 +891,7 @@ a.quiet:hover {
   position: absolute;
   left: 0;
   top: 0.18em;
-  font-family: var(--sans);
+  font-family: var(--font);
   font-style: normal;
   font-size: 0.8125rem;
   color: var(--ink-3);
@@ -939,7 +934,6 @@ a.quiet:hover {
   font-size: 1.875rem;
   font-weight: 400;
   letter-spacing: -0.012em;
-  font-variation-settings: 'opsz' 48;
 }
 
 .section-intro {
@@ -1019,7 +1013,6 @@ a.quiet:hover {
 .study.is-lead h3 {
   font-size: clamp(1.5rem, 1.35rem + 0.4vw, 1.625rem);
   font-weight: 400;
-  font-variation-settings: 'opsz' 60;
 }
 
 .study.is-minor h3 {
@@ -1028,7 +1021,7 @@ a.quiet:hover {
 
 .study .question {
   margin-top: var(--s3);
-  font-family: var(--serif);
+  font-family: var(--font);
   font-size: 1.1875rem;
   line-height: 1.5;
   color: var(--ink-2);
@@ -1057,7 +1050,7 @@ a.quiet:hover {
 }
 
 .facts dt {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.07em;
@@ -1085,7 +1078,7 @@ a.quiet:hover {
   display: flex;
   flex-wrap: wrap;
   gap: var(--s1) var(--s5);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.875rem;
 }
 
@@ -1142,8 +1135,9 @@ h4.arrived {
   margin-top: var(--s2);
 }
 
+math,
 .math {
-  font-family: var(--serif);
+  font-family: 'STIX Two Math', 'STIX Two Text', serif;
   font-size: 1.125rem;
   color: var(--ink);
   line-height: 2;
@@ -1186,7 +1180,7 @@ h4.arrived {
 
 .chart {
   position: relative;
-  font-family: var(--sans);
+  font-family: var(--font);
   touch-action: pan-y;
 }
 
@@ -1200,7 +1194,7 @@ h4.arrived {
 .chart .axis text {
   font-size: 11px;
   fill: var(--ink-3);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 @media (max-width: 36rem) {
@@ -1250,7 +1244,7 @@ h4.arrived {
   margin-top: var(--s1);
   font-size: 0.8125rem;
   color: var(--ink-2);
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
 }
 
 /* ---------- ledger (experience, writing, news) ---------- */
@@ -1278,9 +1272,9 @@ h4.arrived {
 }
 
 .ledger .when {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
-  font-variant-numeric: tabular-nums;
+  font-variant-numeric: tabular-nums lining-nums;
   color: var(--ink-3);
   padding-top: 0.3em;
 }
@@ -1298,7 +1292,7 @@ h4.arrived {
 }
 
 .see {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   white-space: nowrap;
 }
@@ -1324,7 +1318,7 @@ h4.arrived {
 }
 
 .ledger.compact .src {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   color: var(--ink-3);
 }
@@ -1401,7 +1395,7 @@ h4.arrived {
 }
 
 .course-table h4 {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.07em;
@@ -1417,7 +1411,7 @@ h4.arrived {
 }
 
 .grad {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
@@ -1501,7 +1495,7 @@ h4.arrived {
 }
 
 .skills dt {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   color: var(--ink-3);
   padding-top: var(--s4);
@@ -1603,12 +1597,11 @@ h4.arrived {
   align-items: baseline;
   gap: var(--s2) var(--s4);
   margin-bottom: var(--s6);
-  font-family: var(--serif);
+  font-family: var(--font);
   font-size: clamp(1.75rem, 1rem + 3.4vw, 3.75rem);
   font-weight: 300;
   line-height: 1.1;
   letter-spacing: -0.02em;
-  font-variation-settings: 'opsz' 72;
 }
 
 .big-email a {
@@ -1625,7 +1618,7 @@ h4.arrived {
 }
 
 .copy {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   letter-spacing: 0.02em;
   color: var(--ink-3);
@@ -1650,7 +1643,7 @@ h4.arrived {
 }
 
 .contact-list dt {
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   color: var(--ink-3);
   padding-top: 0.25em;
@@ -1694,7 +1687,7 @@ h4.arrived {
   background: var(--paper);
   border: 1px solid var(--rule-strong);
   box-shadow: 0 1px 0 var(--rule), 0 24px 60px -20px rgba(0, 0, 0, 0.35);
-  font-family: var(--sans);
+  font-family: var(--font);
   display: flex;
   flex-direction: column;
   max-height: 70vh;
@@ -1776,7 +1769,7 @@ h4.arrived {
 .colophon {
   border-top: 1px solid var(--rule);
   padding-block: var(--s6) var(--s7);
-  font-family: var(--sans);
+  font-family: var(--font);
   font-size: 0.8125rem;
   color: var(--ink-3);
   line-height: 1.65;
@@ -1822,7 +1815,6 @@ h4.arrived {
   font-weight: 300;
   line-height: 1.05;
   letter-spacing: -0.02em;
-  font-variation-settings: 'opsz' 72;
 }
 
 .page-head h1 + p {
