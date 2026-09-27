@@ -1,27 +1,29 @@
 /* ------------------------------------------------------------------
    Design system
-   Two faces: Newsreader (text and display, with optical sizes) and
-   IBM Plex Sans (labels, dates, navigation — anything tabular).
-   One accent, oxblood, for links and for the months the yield curve
-   was inverted. Spacing on a 4px base. The page is a margin column and
+   Two faces with separate jobs. Newsreader, a serif with optical sizes,
+   is the editorial voice: the name, headings, titles, the opening line,
+   the research questions. IBM Plex Sans carries everything you read or
+   scan: body copy, metadata, dates, navigation.
+   One accent, cobalt, for links, active states, and the months the
+   yield curve was inverted. Neutrals are cool-leaning, not cream. Spacing on a 4px base. The page is a margin column and
    a text column, plus a note column on wide screens, like a book with
    side notes.
 ------------------------------------------------------------------- */
 
 :root {
-  --paper: #f7f4ed;
-  --paper-sunk: #efeadf;
-  --ink: #1d1c1a;
-  --ink-2: #47443d;
-  --ink-3: #6b665c;
-  --rule: #d9d2c3;
-  --rule-strong: #b9b09d;
-  --accent: #8a2c1d;
-  --accent-hover: #5e1c12;
-  --accent-wash: rgba(138, 44, 29, 0.1);
-  --figure-line: #1d1c1a;
-  --figure-shade: #e6dfcf;
-  --scrim: rgba(29, 28, 26, 0.28);
+  --paper: #f6f5f1;
+  --paper-sunk: #edece7;
+  --ink: #1b1c1e;
+  --ink-2: #46484c;
+  --ink-3: #66686d;
+  --rule: #dcdbd5;
+  --rule-strong: #b4b4ad;
+  --accent: #2347c5;
+  --accent-hover: #17318f;
+  --accent-wash: rgba(35, 71, 197, 0.08);
+  --figure-line: #1b1c1e;
+  --figure-shade: #e6e5df;
+  --scrim: rgba(27, 28, 30, 0.3);
 
   --serif: 'Newsreader', 'Iowan Old Style', 'Palatino Linotype', Palatino, Georgia, serif;
   --sans: 'IBM Plex Sans', 'Segoe UI', system-ui, -apple-system, sans-serif;
@@ -49,37 +51,37 @@
 }
 
 :root[data-theme='dark'] {
-  --paper: #161513;
-  --paper-sunk: #1f1d1a;
-  --ink: #ebe5d8;
-  --ink-2: #c3bcad;
-  --ink-3: #9a9384;
-  --rule: #34312b;
-  --rule-strong: #57513f;
-  --accent: #e39a7e;
-  --accent-hover: #f3bda7;
-  --accent-wash: rgba(227, 154, 126, 0.14);
-  --figure-line: #ebe5d8;
-  --figure-shade: #2a2722;
-  --scrim: rgba(0, 0, 0, 0.5);
+  --paper: #121314;
+  --paper-sunk: #1a1b1d;
+  --ink: #e8e8e4;
+  --ink-2: #b9bab5;
+  --ink-3: #8f918c;
+  --rule: #2c2e31;
+  --rule-strong: #4a4d52;
+  --accent: #86a8ff;
+  --accent-hover: #b3c8ff;
+  --accent-wash: rgba(134, 168, 255, 0.12);
+  --figure-line: #e8e8e4;
+  --figure-shade: #232529;
+  --scrim: rgba(0, 0, 0, 0.55);
   color-scheme: dark;
 }
 
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme='light']) {
-    --paper: #161513;
-    --paper-sunk: #1f1d1a;
-    --ink: #ebe5d8;
-    --ink-2: #c3bcad;
-    --ink-3: #9a9384;
-    --rule: #34312b;
-    --rule-strong: #57513f;
-    --accent: #e39a7e;
-    --accent-hover: #f3bda7;
-    --accent-wash: rgba(227, 154, 126, 0.14);
-    --figure-line: #ebe5d8;
-    --figure-shade: #2a2722;
-    --scrim: rgba(0, 0, 0, 0.5);
+    --paper: #121314;
+    --paper-sunk: #1a1b1d;
+    --ink: #e8e8e4;
+    --ink-2: #b9bab5;
+    --ink-3: #8f918c;
+    --rule: #2c2e31;
+    --rule-strong: #4a4d52;
+    --accent: #86a8ff;
+    --accent-hover: #b3c8ff;
+    --accent-wash: rgba(134, 168, 255, 0.12);
+    --figure-line: #e8e8e4;
+    --figure-shade: #232529;
+    --scrim: rgba(0, 0, 0, 0.55);
     color-scheme: dark;
   }
 }
@@ -108,9 +110,9 @@ body {
   margin: 0;
   background: var(--paper);
   color: var(--ink);
-  font-family: var(--serif);
-  font-size: 1.125rem;
-  line-height: 1.6;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
+  line-height: 1.62;
   font-optical-sizing: auto;
   font-kerning: normal;
   -webkit-font-smoothing: antialiased;
@@ -148,6 +150,7 @@ h1,
 h2,
 h3,
 h4 {
+  font-family: var(--serif);
   font-weight: 500;
   line-height: 1.2;
   text-wrap: balance;
@@ -182,17 +185,19 @@ abbr[title] {
 
 /* ---------- links ---------- */
 
+/* Links are ink with a cobalt underline; the text turns cobalt on hover.
+   Saturated blue text everywhere would read as the browser default. */
 a {
-  color: var(--accent);
+  color: var(--ink);
   text-decoration-line: underline;
   text-decoration-thickness: 1px;
-  text-decoration-color: color-mix(in srgb, var(--accent) 38%, transparent);
+  text-decoration-color: color-mix(in srgb, var(--accent) 55%, transparent);
   text-underline-offset: 0.2em;
   transition: color var(--fast), text-decoration-color var(--fast), text-underline-offset var(--fast);
 }
 
 a:hover {
-  color: var(--accent-hover);
+  color: var(--accent);
   text-decoration-color: currentColor;
   text-underline-offset: 0.14em;
 }
@@ -599,6 +604,7 @@ kbd {
 
 .h-inv {
   fill: var(--accent);
+  fill-opacity: 0.88;
 }
 
 .h-line {
@@ -1644,8 +1650,8 @@ kbd {
 
 .palette-input {
   font: inherit;
-  font-family: var(--serif);
-  font-size: 1.1875rem;
+  font-family: var(--sans);
+  font-size: 1.0625rem;
   color: var(--ink);
   background: transparent;
   border: 0;
@@ -1656,7 +1662,6 @@ kbd {
 
 .palette-input::placeholder {
   color: var(--ink-3);
-  font-style: italic;
 }
 
 .palette-list {
@@ -1832,6 +1837,7 @@ kbd {
 }
 
 .tools-cv {
+  color: var(--accent);
   font-family: var(--sans);
   font-size: 0.875rem;
   font-weight: 500;
@@ -2021,6 +2027,105 @@ a.quiet:hover {
 
 .section-body.wide > .big-email {
   max-width: none;
+}
+
+/* ---------- type roles ----------
+   Serif: the editorial layer (name, headings, titles, the opening line,
+   research questions, captions, the email). Sans: everything else.
+   Plex has a larger x-height than Newsreader, so sans sizes sit a step
+   below where the serif was. */
+
+.intro .lede:first-child,
+.questions li,
+.study .question,
+.big-email,
+.portrait figcaption,
+.ledger h4,
+.project h4,
+.degree h3,
+.org-title,
+.essay h2 {
+  font-family: var(--serif);
+}
+
+.intro .lede + .lede {
+  font-size: 1.0625rem;
+  line-height: 1.7;
+}
+
+.study .question {
+  font-size: 1.1875rem;
+  line-height: 1.5;
+  color: var(--ink-2);
+}
+
+.study.is-lead .question {
+  font-size: 1.3125rem;
+  line-height: 1.45;
+  color: var(--ink);
+}
+
+.section-intro,
+.contact-lede,
+.essay p:not(.meta),
+.page-head h1 + p,
+.nf-body {
+  font-size: 1rem;
+  line-height: 1.65;
+}
+
+.facts,
+.ledger .body,
+.ledger.compact p,
+.project p,
+.course-table li,
+.honors li,
+.honors-line,
+.skills,
+.plain-list li,
+.study.is-minor p:not(.meta) {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+}
+
+.facts dd {
+  color: var(--ink);
+}
+
+.note {
+  font-size: 0.875rem;
+}
+
+.contact-list {
+  font-size: 1rem;
+}
+
+.figure figcaption {
+  font-size: 0.8125rem;
+}
+
+/* Titles in the serif get slightly tighter tracking as they grow. */
+.study h3,
+.degree h3,
+.org-title,
+.desk-head h2,
+.section-head h2 {
+  letter-spacing: -0.012em;
+}
+
+/* Accent as a rule, not a fill: the active nav item and the lead entries. */
+.study.is-lead {
+  border-top-color: var(--rule);
+}
+
+.study.is-lead .study-meta .tnum::before {
+  content: '';
+  display: inline-block;
+  width: 1.25rem;
+  height: 2px;
+  margin-right: 0.45rem;
+  vertical-align: 0.28em;
+  background: var(--accent);
 }
 
 /* ---------- print: the home page doubles as a one-page summary ---------- */

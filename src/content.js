@@ -219,7 +219,7 @@ export const education = {
   ],
   earlier: {
     name: 'A Levels, Little Angels’ College, Nepal',
-    detail: 'Gold medal, Business Case Analysis round, Third Nepal Economic Olympiad (2022).',
+    detail: 'Top in Nepal in Economics, GCE A Levels. Gold medal, Business Case Analysis round, Third Nepal Economic Olympiad (2022).',
   },
 };
 
@@ -318,6 +318,7 @@ export const presentations = [
     title: 'Summer research presentation',
     venue: 'Penn LDI SUMR Research Symposium, Philadelphia',
     when: 'Summer 2026',
+    href: 'https://upenn.app.box.com/s/jfh7cvq5stz32bvbrf8fjuyi3mbepr5y',
   },
   {
     title: 'Nepalese Population in the United States: A Demographic and Socioeconomic Analysis',

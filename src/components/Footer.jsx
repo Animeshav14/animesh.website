@@ -14,7 +14,7 @@ export default function Footer({ openPalette }) {
         <div>
           <p>
             The line under my name is the gap between 10-year and 3-month U.S. Treasury yields, month by month from
-            1962 to 2025, using the FRED series from my <Link to={{ pathname: '/', hash: '#yield-curve' }}>recession-nowcasting memo</Link>. Red marks the months it
+            1962 to 2025, using the FRED series from my <Link to={{ pathname: '/', hash: '#yield-curve' }}>recession-nowcasting memo</Link>. Blue marks the months it
             was inverted; shading marks NBER recessions.
           </p>
           <p>

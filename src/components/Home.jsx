@@ -253,7 +253,7 @@ function Study({ s, index }) {
             <SpreadChart />
             <figcaption>
               <b>Figure.</b> 10-year minus 3-month Treasury spread, monthly, 1962–2025, percentage points. Shaded:
-              NBER recessions. Red: inversions. This is also the line drawn under my name at the top of the page.
+              NBER recessions. Blue: inversions. This is also the line drawn under my name at the top of the page.
               Data: FRED (GS10, TB3MS, USREC).
             </figcaption>
           </figure>

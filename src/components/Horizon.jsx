@@ -73,7 +73,7 @@ export default function Horizon({ compact = false }) {
         className="horizon-plot"
         tabIndex={0}
         role="img"
-        aria-label="The 10-year minus 3-month U.S. Treasury spread, monthly from 1962 to 2025. Periods when it falls below zero are filled in red; recessions are shaded. Arrow keys step through months."
+        aria-label="The 10-year minus 3-month U.S. Treasury spread, monthly from 1962 to 2025. Periods when it falls below zero are filled in blue; recessions are shaded. Arrow keys step through months."
         onPointerMove={(e) => pick(e.clientX)}
         onPointerDown={(e) => pick(e.clientX)}
         onPointerLeave={(e) => e.pointerType === 'mouse' && setI(null)}
