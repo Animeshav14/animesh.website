@@ -25,6 +25,7 @@ function A({ href, children, className = '', ...rest }) {
     return (
       <a href={href} className={`ext ${className}`} target="_blank" rel="noopener noreferrer" {...rest}>
         {children}
+        <span className="sr-only"> (opens in new tab)</span>
       </a>
     );
   }
@@ -103,6 +104,7 @@ function Intro() {
             <li>
               <a href={person.cv} target="_blank" rel="noopener">
                 CV
+                <span className="sr-only"> (opens in new tab)</span>
               </a>{' '}
               <span className="meta">PDF, one page</span>
             </li>
@@ -310,6 +312,7 @@ function Study({ s }) {
         {s.id === 'diaspora' && (
           <figure className="figure">
             <a className="poster-thumb" href="/assets/shrestha_animesh_rimmes_poster.pdf" target="_blank" rel="noopener">
+              <span className="sr-only"> (opens in new tab)</span>
               <picture>
                 <source type="image/webp" srcSet="/assets/poster-thumb.webp" />
                 <img
@@ -499,7 +502,9 @@ function Projects() {
                 {p.see && (
                   <>
                     {' '}
-                    <A href={p.see}>See Research&nbsp;→</A>
+                    <A className="see" href={p.see}>
+                      See Research&nbsp;→
+                    </A>
                   </>
                 )}
               </p>
@@ -637,6 +642,7 @@ function Contact() {
         <dd>
           <a href={person.cv} target="_blank" rel="noopener">
             Animesh_CV.pdf
+            <span className="sr-only"> (opens in new tab)</span>
           </a>{' '}
           <span className="meta">one page, updated {person.cvUpdated}</span>
         </dd>

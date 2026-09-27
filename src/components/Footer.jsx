@@ -22,6 +22,7 @@ export default function Footer({ openPalette }) {
           <br />
           <a href={person.cv} target="_blank" rel="noopener">
             CV
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
           {' · '}
           <a href={person.github}>GitHub</a>

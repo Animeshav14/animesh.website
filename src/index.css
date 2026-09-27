@@ -218,9 +218,9 @@ a.quiet:hover {
 }
 
 .ext::after {
-  content: '\2197';
+  content: '\2197' / '';
   font-family: var(--sans);
-  font-size: 0.7em;
+  font-size: 0.75em;
   margin-left: 0.18em;
   display: inline-block;
   opacity: 0.55;
@@ -230,6 +230,28 @@ a.quiet:hover {
 .ext:hover::after {
   opacity: 1;
   transform: translate(0.08em, -0.08em);
+}
+
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  margin: -1px;
+  padding: 0;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+/* Small inline links get at least a 24px-tall hit area. */
+.hit,
+.see,
+.colophon a,
+.colophon .linklike {
+  display: inline-block;
+  min-width: 24px;
+  padding-block: 0.3rem;
 }
 
 .skip {
@@ -419,6 +441,9 @@ a.quiet:hover {
 }
 
 .tools-cv {
+  display: inline-block;
+  min-width: 24px;
+  min-height: 24px;
   color: var(--accent);
   font-family: var(--sans);
   font-size: 0.875rem;
@@ -556,6 +581,10 @@ a.quiet:hover {
   margin-top: var(--s5);
 }
 
+.horizon-stage {
+  position: relative;
+}
+
 .horizon-plot {
   position: relative;
   height: clamp(5.5rem, 11vw, 10rem);
@@ -632,6 +661,7 @@ a.quiet:hover {
 
 .h-read {
   position: absolute;
+  margin: 0;
   top: -1.75rem;
   transform: translateX(0.5rem);
   font-family: var(--sans);
@@ -642,6 +672,11 @@ a.quiet:hover {
   background: var(--paper);
   padding-inline: 0.25rem;
   pointer-events: none;
+}
+
+.h-read:empty {
+  padding: 0;
+  background: none;
 }
 
 .h-read.flip {
@@ -1261,7 +1296,7 @@ h4.arrived {
   color: var(--ink-2);
 }
 
-.ledger .see {
+.see {
   font-family: var(--sans);
   font-size: 0.8125rem;
   white-space: nowrap;

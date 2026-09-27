@@ -89,40 +89,47 @@ export default function Horizon({ compact = false }) {
 
   return (
     <div className={['horizon', compact && 'compact', animate && 'animate'].filter(Boolean).join(' ')}>
-      <div
-        ref={ref}
-        className="horizon-plot"
-        tabIndex={0}
-        role="img"
-        aria-label="The 10-year minus 3-month U.S. Treasury spread, monthly from 1962 to 2025. Periods when it falls below zero are filled in blue; recessions are shaded. Arrow keys step through months."
-        onPointerMove={(e) => pick(e.clientX)}
-        onPointerDown={(e) => pick(e.clientX)}
-        onPointerLeave={(e) => e.pointerType === 'mouse' && setI(null)}
-        onKeyDown={onKey}
-        onBlur={() => setI(null)}
-      >
-        <svg viewBox={`0 0 ${VB_W} ${VB_H}`} preserveAspectRatio="none" aria-hidden="true">
-          {bands.map((b) => (
-            <rect key={b.key} className="h-rec" x={b.x} y="0" width={b.w} height={VB_H} />
-          ))}
-          <line className="h-zero" x1="0" x2={VB_W} y1={zero} y2={zero} vectorEffect="non-scaling-stroke" />
-          <path className="h-inv" d={inv} />
-          <path className="h-line" d={line} vectorEffect="non-scaling-stroke" />
-        </svg>
-        {p && (
-          <>
-            <span className="h-cursor" style={{ left: `${leftPct}%` }} aria-hidden="true" />
-            <span className="h-dot" style={{ left: `${leftPct}%`, top: `${topPct}%` }} aria-hidden="true" />
-            <span
-              className={`h-read ${leftPct > 70 ? 'flip' : ''}`}
-              style={{ left: `${leftPct}%` }}
-              aria-live="polite"
-            >
+      <div className="horizon-stage">
+        <div
+          ref={ref}
+          className="horizon-plot"
+          tabIndex={0}
+          role="img"
+          aria-label="The 10-year minus 3-month U.S. Treasury spread, monthly from 1962 to 2025. Periods when it falls below zero are filled in blue; recessions are shaded. Arrow keys step through months."
+          onPointerMove={(e) => pick(e.clientX)}
+          onPointerDown={(e) => pick(e.clientX)}
+          onPointerLeave={(e) => e.pointerType === 'mouse' && setI(null)}
+          onKeyDown={onKey}
+          onBlur={() => setI(null)}
+        >
+          <svg viewBox={`0 0 ${VB_W} ${VB_H}`} preserveAspectRatio="none" aria-hidden="true">
+            {bands.map((b) => (
+              <rect key={b.key} className="h-rec" x={b.x} y="0" width={b.w} height={VB_H} />
+            ))}
+            <line className="h-zero" x1="0" x2={VB_W} y1={zero} y2={zero} vectorEffect="non-scaling-stroke" />
+            <path className="h-inv" d={inv} />
+            <path className="h-line" d={line} vectorEffect="non-scaling-stroke" />
+          </svg>
+          {p && (
+            <>
+              <span className="h-cursor" style={{ left: `${leftPct}%` }} aria-hidden="true" />
+              <span className="h-dot" style={{ left: `${leftPct}%`, top: `${topPct}%` }} aria-hidden="true" />
+            </>
+          )}
+        </div>
+        {/* Outside the role="img" element so screen readers announce it. */}
+        <p
+          className={`h-read ${leftPct > 70 ? 'flip' : ''}`}
+          style={{ left: `${leftPct}%` }}
+          aria-live="polite"
+        >
+          {p && (
+            <>
               <b>{label(p[0])}</b> {signed(p[1])} pp{inRec ? <em> recession</em> : null}
               {p[1] < 0 ? <em> inverted</em> : null}
-            </span>
-          </>
-        )}
+            </>
+          )}
+        </p>
       </div>
       {!compact && (
       <div className="frame horizon-legend meta">
@@ -137,7 +144,9 @@ export default function Horizon({ compact = false }) {
             recession
           </span>
         </span>
-        <Link to={{ pathname: '/', hash: '#yield-curve' }}>What is this line?</Link>
+        <Link className="hit" to={{ pathname: '/', hash: '#yield-curve' }}>
+          What is this line?
+        </Link>
       </div>
       )}
     </div>

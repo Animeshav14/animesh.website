@@ -30,6 +30,7 @@ export default function Blogs() {
               <h2>
                 <a className="ext" href={w.href} target="_blank" rel="noopener noreferrer">
                   {w.title}
+                  <span className="sr-only"> (opens in new tab)</span>
                 </a>
               </h2>
               <p>{w.summary}</p>

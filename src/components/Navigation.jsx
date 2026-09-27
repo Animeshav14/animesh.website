@@ -40,6 +40,7 @@ export default function Navigation({ openPalette }) {
         <div className="masthead-tools">
           <a className="tools-cv" href={person.cv} target="_blank" rel="noopener">
             CV
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
           <button
             type="button"
@@ -62,6 +63,7 @@ export default function Navigation({ openPalette }) {
           </Link>
           <a className="nav-cv" href={person.cv} target="_blank" rel="noopener">
             CV<span className="nav-cv-meta">PDF</span>
+            <span className="sr-only"> (opens in new tab)</span>
           </a>
         </nav>
       </div>
