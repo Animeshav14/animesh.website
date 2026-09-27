@@ -16,7 +16,6 @@ export const person = {
 export const questions = [
   { text: 'When one country spends more on health care than another, how much of the gap is price and how much is quantity?', href: '#health-ppp' },
   { text: 'Do U.S. free trade agreements change how much aid and capital flow to partner countries?', href: '#fta' },
-  { text: 'How do changes in how physicians are paid change the care they provide?', href: '#payment-policy' },
   { text: 'What does the slope of the yield curve say about the next twelve months?', href: '#yield-curve' },
   { text: 'How have Nepali immigrants fared in the U.S. relative to other South Asian immigrants?', href: '#diaspora' },
 ];
@@ -59,19 +58,6 @@ export const research = [
       ['Method', 'Event-time panels around each agreement’s entry into force; regression and event-study models in R and Stata to compare pre- and post-agreement paths.'],
       ['My part', 'Extracted, cleaned, merged, and validated the macroeconomic and financial series; estimated the models; produced figures and short summaries comparing trends across countries and industries, which I presented to faculty.'],
       ['Status', 'Faculty research project; I worked on it as an undergraduate research assistant.'],
-    ],
-  },
-  {
-    id: 'payment-policy',
-    weight: 'standard',
-    title: 'Payment policy and provider behavior',
-    setting: 'Penn LDI & Wharton · SUMR',
-    when: 'Summer 2026',
-    question:
-      'How changes in the way providers are paid affect their decisions and the volume of care — in this project, the use of cardiac stents.',
-    rows: [
-      ['Method', 'Difference-in-differences models in Python and Stata.'],
-      ['My part', 'Turned the research questions into reproducible analysis code and estimated the models.'],
     ],
   },
   {

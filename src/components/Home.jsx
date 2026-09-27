@@ -96,8 +96,7 @@ function Intro() {
           </p>
           <p className="lede">
             This past summer I was a research scholar at the University of Pennsylvania, where I built a
-            purchasing-power-parity index for health services across 26 countries and estimated how changes in
-            payment policy affect what providers do. Before that I spent a year as a research assistant in Georgia
+            purchasing-power-parity index for health services across 26 countries. Before that I spent a year as a research assistant in Georgia
             State’s economics department, assembling a 46-country panel to study U.S. free trade agreements, foreign
             aid, and capital flows. I intend to go on to a PhD in economics.
           </p>
@@ -452,7 +451,7 @@ function Projects() {
                 {p.see && (
                   <>
                     {' '}
-                    <A href={p.see}>See §1.4&nbsp;→</A>
+                    <A href={p.see}>See §1.{research.findIndex((r) => `#${r.id}` === p.see) + 1}&nbsp;→</A>
                   </>
                 )}
               </p>
