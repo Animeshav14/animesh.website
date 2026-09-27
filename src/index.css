@@ -697,6 +697,7 @@ a.quiet:hover {
 .horizon-legend {
   display: flex;
   flex-wrap: wrap;
+  align-items: center;
   justify-content: space-between;
   gap: var(--s1) var(--s4);
   margin-top: var(--s3);
@@ -1856,6 +1857,7 @@ h4.arrived {
 .not-found {
   padding-block: var(--s9);
   min-height: 60vh;
+  align-content: start;
 }
 
 .nf-body {

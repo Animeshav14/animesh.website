@@ -58,7 +58,7 @@ export default function Navigation({ openPalette }) {
               {label}
             </Link>
           ))}
-          <Link to="/blogs" aria-current={pathname === '/blogs' || pathname === '/writing' ? 'page' : undefined}>
+          <Link to="/writing" aria-current={pathname === '/writing' ? 'page' : undefined}>
             Writing
           </Link>
           <a className="nav-cv" href={person.cv} target="_blank" rel="noopener">

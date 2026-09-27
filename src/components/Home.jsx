@@ -382,7 +382,7 @@ function Experience() {
                   {it.text}{' '}
                   {it.see && (
                     <A className="see" href={it.see}>
-                      {it.see === '/blogs' ? 'Writing' : 'More'}&nbsp;→
+                      {it.see === '/writing' ? 'Writing' : 'More'}&nbsp;→
                     </A>
                   )}
                 </p>
@@ -561,7 +561,7 @@ function Desk() {
             ))}
           </ol>
           <p className="meta more">
-            <Link to="/blogs">Writing, with summaries &rarr;</Link>
+            <Link to="/writing">Writing, with summaries &rarr;</Link>
           </p>
         </div>
 

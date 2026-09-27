@@ -160,7 +160,7 @@ export const experience = [
         org: 'Nepal Economic Forum',
         place: 'Kathmandu',
         text: 'Wrote macroeconomic reviews on growth, inflation, and fiscal policy; tracked indicators and summarized World Bank and national policy conferences for the Forum’s reports.',
-        see: '/blogs',
+        see: '/writing',
       },
     ],
   },

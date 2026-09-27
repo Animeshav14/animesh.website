@@ -48,4 +48,4 @@ The line across the top of the home page is the 10-year minus 3-month Treasury s
 
 ## Deployment
 
-Hosted on Vercel. `vercel.json` rewrites every path to `index.html`, so client-side routes like `/blogs` load when opened directly.
+Hosted on Vercel. `vercel.json` rewrites every path to `index.html`, so client-side routes like `/writing` load when opened directly. `/blogs`, the old address of the writing page, redirects there permanently.

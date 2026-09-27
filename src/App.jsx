@@ -1,15 +1,16 @@
 import React, { useEffect, useLayoutEffect, useRef, useState } from 'react';
-import { BrowserRouter, Routes, Route, useLocation } from 'react-router-dom';
+import { BrowserRouter, Navigate, Routes, Route, useLocation } from 'react-router-dom';
 import Home from './components/Home.jsx';
-import Blogs from './components/Blogs.jsx';
+import Writing from './components/Writing.jsx';
 import NotFound from './components/NotFound.jsx';
 import Navigation from './components/Navigation.jsx';
 import Footer from './components/Footer.jsx';
 import CommandPalette from './components/CommandPalette.jsx';
 
+const SITE = 'https://www.animeshshrestha.com';
+
 const titles = {
   '/': 'Animesh Shrestha',
-  '/blogs': 'Writing · Animesh Shrestha',
   '/writing': 'Writing · Animesh Shrestha',
 };
 
@@ -23,6 +24,8 @@ function ScrollManager() {
 
   useLayoutEffect(() => {
     document.title = titles[pathname] || 'Not found · Animesh Shrestha';
+    const canonical = document.querySelector('link[rel="canonical"]');
+    if (canonical) canonical.href = SITE + pathname;
   }, [pathname]);
 
   useEffect(() => {
@@ -58,8 +61,8 @@ function Shell() {
       <main id="main" key={pathname}>
         <Routes>
           <Route path="/" element={<Home />} />
-          <Route path="/blogs" element={<Blogs />} />
-          <Route path="/writing" element={<Blogs />} />
+          <Route path="/writing" element={<Writing />} />
+          <Route path="/blogs" element={<Navigate to="/writing" replace />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </main>

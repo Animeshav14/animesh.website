@@ -34,7 +34,7 @@ export default function CommandPalette({ open, setOpen }) {
       { group: 'Go to', label: 'Education', run: () => go('#education') },
       { group: 'Go to', label: 'Leadership', run: () => go('#leadership') },
       { group: 'Go to', label: 'Projects', run: () => go('#projects') },
-      { group: 'Go to', label: 'Writing', run: () => navigate('/blogs') },
+      { group: 'Go to', label: 'Writing', run: () => navigate('/writing') },
       { group: 'Go to', label: 'News', run: () => go('#news') },
       { group: 'Go to', label: 'Skills', run: () => go('#skills') },
       { group: 'Go to', label: 'Contact', run: () => go('#contact') },

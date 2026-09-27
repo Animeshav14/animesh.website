@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { writing } from '../content.js';
 import Horizon from './Horizon.jsx';
 
-export default function Blogs() {
+export default function Writing() {
   return (
     <>
     <Horizon compact />
