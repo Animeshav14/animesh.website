@@ -261,7 +261,7 @@ summary:focus-visible,
 }
 
 .meta {
-  font-size: 0.8125rem;
+  font-size: 0.875rem;
   line-height: 1.5;
   color: var(--ink-3);
 }
@@ -411,7 +411,7 @@ summary:focus-visible,
 
 .nav-cv-meta {
   margin-left: 0.35em;
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 400;
   letter-spacing: 0.06em;
   color: var(--ink-3);
@@ -507,7 +507,7 @@ summary:focus-visible,
 /* ---------- intro ---------- */
 
 .intro {
-  padding-top: var(--s7);
+  padding-top: var(--s6);
 }
 
 .intro-top {
@@ -521,7 +521,7 @@ summary:focus-visible,
 }
 
 .intro-name {
-  font-size: clamp(3rem, 1.1rem + 7.4vw, 8rem);
+  font-size: clamp(3rem, 1rem + 6.4vw, 6.5rem);
   font-weight: 300;
   line-height: 0.92;
   letter-spacing: -0.035em;
@@ -908,7 +908,7 @@ summary:focus-visible,
 }
 
 .section-head h2 {
-  font-size: 1.5rem;
+  font-size: 1.875rem;
   font-weight: 400;
   letter-spacing: -0.005em;
   font-variation-settings: 'opsz' 48;
@@ -983,13 +983,13 @@ summary:focus-visible,
 
 .study h3 {
   margin-top: var(--s2);
-  font-size: 1.4375rem;
+  font-size: 1.375rem;
   font-weight: 500;
   letter-spacing: -0.005em;
 }
 
 .study.is-lead h3 {
-  font-size: clamp(1.5rem, 1.3rem + 0.7vw, 1.875rem);
+  font-size: clamp(1.5rem, 1.35rem + 0.4vw, 1.625rem);
   font-weight: 400;
   font-variation-settings: 'opsz' 60;
   letter-spacing: -0.012em;
@@ -1015,7 +1015,7 @@ summary:focus-visible,
 
 .facts dt {
   font-family: var(--sans);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -1191,7 +1191,7 @@ summary:focus-visible,
 }
 
 .chart .axis text {
-  font-size: 10px;
+  font-size: 11px;
   fill: var(--ink-3);
   font-variant-numeric: tabular-nums;
 }
@@ -1346,7 +1346,7 @@ summary:focus-visible,
 
 .course-table h4 {
   font-family: var(--sans);
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.07em;
   text-transform: uppercase;
@@ -1364,7 +1364,7 @@ summary:focus-visible,
 
 .grad {
   font-family: var(--sans);
-  font-size: 0.625rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.06em;
   text-transform: uppercase;
@@ -1575,7 +1575,7 @@ summary:focus-visible,
 }
 
 .palette-group {
-  font-size: 0.6875rem;
+  font-size: 0.75rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -1971,7 +1971,7 @@ a.quiet:hover {
 .essay p:not(.meta),
 .page-head h1 + p,
 .nf-body {
-  font-size: 1rem;
+  font-size: 1.0625rem;
   line-height: 1.65;
 }
 
@@ -1985,7 +1985,7 @@ a.quiet:hover {
 .skills,
 .plain-list li,
 .study.is-minor p:not(.meta) {
-  font-size: 0.9375rem;
+  font-size: 1rem;
   line-height: 1.6;
 }
 
