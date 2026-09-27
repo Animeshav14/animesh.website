@@ -44,6 +44,7 @@ export const research = [
       ['My part', 'Built and validated the index: assembled the country data, computed the bilateral and multilateral indices, and compared the output against existing estimates.'],
       ['Status', 'Experimental index, built over the summer program.'],
     ],
+    links: [{ label: 'Symposium presentation', href: 'https://upenn.app.box.com/s/jfh7cvq5stz32bvbrf8fjuyi3mbepr5y' }],
     note: 'fisher',
   },
   {
@@ -263,23 +264,12 @@ export const projects = [
         see: '#yield-curve',
         link: 'https://github.com/Animeshav14/recession-nowcasting',
       },
-    ],
-  },
-  {
-    group: 'Hackathons',
-    items: [
       {
         title: 'Debt-Relief',
         context: 'HackGT 2025',
         text: 'A Flask app that combines the Capital One Nessie API with a user’s income, expenses, and debts to project payoff timelines and compare repayment strategies.',
         stack: 'Python · Flask',
         link: 'https://github.com/Animeshav14/Debt-Relief',
-      },
-      {
-        title: 'Moodboard AI',
-        context: 'AI ATL 2025 · team project',
-        text: 'Turns a text prompt into a visual moodboard for early-stage design work.',
-        link: 'https://github.com/kshitizregmi/mootboard',
       },
     ],
   },
@@ -366,12 +356,6 @@ export const news = [
     source: 'LAC A Level',
     href: 'https://www.facebook.com/LacAlevel/posts/272840145024419/',
   },
-  {
-    when: 'Earlier',
-    text: 'Little Angels’ College on the accomplishments of its A Level students.',
-    source: 'Little Angels’ Education Group',
-    href: 'https://www.facebook.com/LittleAngelsGroup.LA/posts/617631317043398/',
-  },
 ];
 
 export const skills = [
@@ -387,15 +371,5 @@ export const certifications = [
     title: 'FRED Data Practitioner',
     issuer: 'Federal Reserve Bank of St. Louis',
     href: 'https://www.credly.com/earner/earned/badge/69d075c3-09a3-4fdf-b4cd-d4b8c3a665d2',
-  },
-  {
-    title: 'Cleaning Bad Data in R',
-    issuer: 'LinkedIn Learning',
-    href: 'https://www.linkedin.com/learning/certificates/9ec2109842793c2927c95834300d286e1c151ca4f878c9656c3a8247a883447d/',
-  },
-  {
-    title: 'R for Data Science: Analysis and Visualization',
-    issuer: 'LinkedIn Learning',
-    href: 'https://www.linkedin.com/learning/certificates/77134fd15ad4b9dd12446c5dc60669307032668938bc0f47a872249d62da85b6',
   },
 ];
