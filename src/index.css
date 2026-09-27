@@ -33,8 +33,8 @@
   --s9: 6.5rem;
 
   --measure: 36rem;
-  --margin-col: 10.5rem;
-  --note-col: 15rem;
+  --margin-col: 11.25rem;
+  --note-col: 14.75rem;
   --gutter: clamp(1.25rem, 5vw, 3rem);
   --page: 74rem;
 
@@ -759,6 +759,10 @@ a.quiet:hover {
 
 .intro-now li + li {
   margin-top: var(--s1);
+}
+
+.intro-now li {
+  text-wrap: balance;
 }
 
 .intro .lede:first-child {
