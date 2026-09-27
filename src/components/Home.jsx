@@ -158,50 +158,101 @@ function FisherNote() {
     <aside className="note" aria-label="Index formulas">
       <span className="label">The two formulas</span>
       <p>Fisher: the geometric mean of the Laspeyres and Paasche indices between countries <i>j</i> and <i>k</i>,</p>
-      <p className="math" aria-label="P F j k equals the square root of P L j k times P P j k">
-        <i>P</i>
-        <sup>F</sup>
-        <sub>
-          <i>jk</i>
-        </sub>
-        <span className="op">=</span>(<i>P</i>
-        <sup>L</sup>
-        <sub>
-          <i>jk</i>
-        </sub>
-        <span className="op">·</span>
-        <i>P</i>
-        <sup>P</sup>
-        <sub>
-          <i>jk</i>
-        </sub>
-        )<sup>½</sup>
+      <math display="block" className="math">
+        <mrow>
+          <msubsup>
+            <mi>P</mi>
+            <mrow>
+              <mi>j</mi>
+              <mi>k</mi>
+            </mrow>
+            <mi mathvariant="normal">F</mi>
+          </msubsup>
+          <mo>=</mo>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <msubsup>
+                <mi>P</mi>
+                <mrow>
+                  <mi>j</mi>
+                  <mi>k</mi>
+                </mrow>
+                <mi mathvariant="normal">L</mi>
+              </msubsup>
+              <mo>·</mo>
+              <msubsup>
+                <mi>P</mi>
+                <mrow>
+                  <mi>j</mi>
+                  <mi>k</mi>
+                </mrow>
+                <mi mathvariant="normal">P</mi>
+              </msubsup>
+              <mo>)</mo>
+            </mrow>
+            <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mn>2</mn>
+            </mrow>
+          </msup>
+        </mrow>
+      </math>
+      <p>
+        EKS: chain every comparison through every third country, so that all 325 pairwise comparisons among the 26
+        countries are consistent with one another,
       </p>
-      <p>EKS: chain every comparison through every third country, so that 26 bilateral indices agree with one another,</p>
-      <p className="math" aria-label="P EKS j k equals the product over l of P F j l times P F l k, to the power one over N">
-        <i>P</i>
-        <sup>EKS</sup>
-        <sub>
-          <i>jk</i>
-        </sub>
-        <span className="op">=</span>
-        <span className="big">∏</span>
-        <sub>
-          <i>l</i>
-        </sub>
-        (<i>P</i>
-        <sup>F</sup>
-        <sub>
-          <i>jl</i>
-        </sub>
-        <span className="op">·</span>
-        <i>P</i>
-        <sup>F</sup>
-        <sub>
-          <i>lk</i>
-        </sub>
-        )<sup>1/<i>N</i></sup>
-      </p>
+      <math display="block" className="math">
+        <mrow>
+          <msubsup>
+            <mi>P</mi>
+            <mrow>
+              <mi>j</mi>
+              <mi>k</mi>
+            </mrow>
+            <mi mathvariant="normal">EKS</mi>
+          </msubsup>
+          <mo>=</mo>
+          <munderover>
+            <mo>∏</mo>
+            <mrow>
+              <mi>l</mi>
+              <mo>=</mo>
+              <mn>1</mn>
+            </mrow>
+            <mi>N</mi>
+          </munderover>
+          <msup>
+            <mrow>
+              <mo>(</mo>
+              <msubsup>
+                <mi>P</mi>
+                <mrow>
+                  <mi>j</mi>
+                  <mi>l</mi>
+                </mrow>
+                <mi mathvariant="normal">F</mi>
+              </msubsup>
+              <mo>·</mo>
+              <msubsup>
+                <mi>P</mi>
+                <mrow>
+                  <mi>l</mi>
+                  <mi>k</mi>
+                </mrow>
+                <mi mathvariant="normal">F</mi>
+              </msubsup>
+              <mo>)</mo>
+            </mrow>
+            <mrow>
+              <mn>1</mn>
+              <mo>/</mo>
+              <mi>N</mi>
+            </mrow>
+          </msup>
+        </mrow>
+      </math>
     </aside>
   );
 }
@@ -386,7 +437,7 @@ function Education() {
           {education.awards.map((a) => (
             <li key={a.name}>
               {a.name}
-              {a.detail && <span className="detail"> — {a.detail}</span>}
+              {a.detail && <span className="detail"> ({a.detail})</span>}
             </li>
           ))}
         </ul>
@@ -553,7 +604,8 @@ function Skills() {
         <ul className="honors">
           {certifications.map((c) => (
             <li key={c.title}>
-              <A href={c.href}>{c.title}</A> <span className="detail">— {c.issuer}</span>
+              <A href={c.href}>{c.title}</A>
+              <span className="detail">, {c.issuer}</span>
             </li>
           ))}
         </ul>
@@ -577,8 +629,8 @@ function Contact() {
   return (
     <Section id="contact" no="9" title="Contact" wide>
       <p className="contact-lede">
-        Email is best. I am glad to hear about research assistant and predoctoral positions, and about any of the
-        questions near the top of this page.
+        Email is best. I am glad to hear about research assistant, predoctoral, and internship positions, and about
+        any of the questions near the top of this page.
       </p>
       <p className="big-email">
         <a href={`mailto:${person.email}`}>{person.email}</a>
@@ -592,7 +644,7 @@ function Contact() {
           <a href={person.cv} target="_blank" rel="noopener">
             Animesh_CV.pdf
           </a>{' '}
-          <span className="meta">one page, updated {person.updated}</span>
+          <span className="meta">one page, updated {person.cvUpdated}</span>
         </dd>
         <dt>GitHub</dt>
         <dd>

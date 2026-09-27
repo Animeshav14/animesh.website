@@ -10,6 +10,7 @@ export const person = {
   linkedin: 'https://www.linkedin.com/in/animeshshr/',
   transcript: 'https://drive.google.com/file/d/17cH6FQPHSLabMgkvpMRrX54O3gWH1BVL/view?usp=drive_link',
   updated: 'September 2026',
+  cvUpdated: 'August 2026',
 };
 
 // Questions the projects below have actually asked. Each points at its entry.
@@ -67,11 +68,11 @@ export const research = [
     setting: 'Independent research memo',
     when: 'Nov 2025',
     question:
-      'An inverted yield curve — short rates above long rates — has preceded every U.S. recession since the 1950s. How much forward-looking information does the 10-year minus 3-month spread carry on its own?',
+      'An inverted yield curve, with short rates above long rates, has preceded every U.S. recession since the late 1960s. How much does the 10-year minus 3-month spread say about the next twelve months on its own?',
     rows: [
       ['Data', 'Monthly 10-year and 3-month Treasury rates and the NBER recession indicator, from FRED.'],
       ['Method', 'Logistic regression and a random forest predicting whether a recession begins within twelve months; trained on data through about 2004 and tested on the most recent twenty years.'],
-      ['Result', 'Test-period AUC of about 0.64 (logit) and 0.66 (random forest) — moderate, but both models raise the predicted probability ahead of 2008 and 2020. A single predictor is the obvious limitation.'],
+      ['Result', 'Test-period AUC of about 0.64 (logit) and 0.66 (random forest). Both models raise the predicted probability ahead of 2008 and 2020, but the test window also includes the 2022–24 inversion, which was not followed by a recession. A single predictor is the main limitation.'],
     ],
     links: [
       { label: 'Memo (PDF)', href: 'https://github.com/Animeshav14/recession-nowcasting/blob/main/memo/memo.pdf' },
@@ -96,7 +97,7 @@ export const research = [
   {
     id: 'mental-models',
     weight: 'minor',
-    title: 'Mental models and health behavior — a scoping review',
+    title: 'Mental models and health behavior: a scoping review',
     setting: 'Penn LDI · SUMR',
     when: 'Summer 2026',
     summary:
@@ -231,7 +232,7 @@ export const leadership = {
   ],
   scope: '245+ members interested in economics, finance, consulting, and policy.',
   items: [
-    'Plan the year’s programming — speaker events, partnerships with other universities’ clubs, and career sessions.',
+    'Plan the year’s programming: speaker events, partnerships with other universities’ clubs, and career sessions.',
     'Built the club’s internship finder: a Streamlit app that loads a curated sheet of 100+ internships, filters by major, graduation year, industry, and location, and uses the OpenAI API to answer questions and give feedback on how a résumé fits a posting.',
   ],
 };
@@ -375,7 +376,7 @@ export const news = [
 
 export const skills = [
   ['Languages & tools', 'R, Stata, Python (pandas, NumPy, matplotlib, scikit-learn), SQL, Excel, LaTeX, Git, Jupyter'],
-  ['Econometrics', 'Panel data, event studies, difference-in-differences, regression and hypothesis testing, time series'],
+  ['Econometrics', 'Panel data, event studies, regression and hypothesis testing, time series'],
   ['Measurement', 'Index numbers (Fisher, EKS), cross-country data harmonization, survey microdata (ACS/IPUMS)'],
   ['Other methods', 'Principal components, k-means clustering, Monte Carlo simulation, classification models'],
   ['Spoken', 'English (fluent), Nepali (native)'],
