@@ -1,5 +1,5 @@
 // Renders public/og.png (1200x630): the name above the 10y-3m spread line,
-// in STIX Two Text and the site's light palette.
+// in STIX Two Text on the site's black canvas.
 //
 //   npm run og
 //
@@ -17,12 +17,12 @@ const font = (file) =>
   readFileSync(`${root}node_modules/@fontsource/stix-two-text/files/${file}`).toString('base64');
 
 const color = {
-  paper: '#f6f5f1',
-  ink: '#1b1c1e',
-  ink3: '#66686d',
-  accent: '#2347c5',
-  shade: '#d8d6ce',
-  zero: '#b4b4ad',
+  paper: '#000000',
+  ink: '#f1f0ec',
+  ink3: '#8d8c87',
+  accent: '#5a84ff',
+  shade: '#1f2024',
+  zero: '#45464b',
 };
 
 const W = 1200;
