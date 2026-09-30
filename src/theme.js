@@ -1,12 +1,12 @@
-// Theme: 'light' | 'dark' | null (follow the system). The attribute is set
-// before first paint by the inline script in index.html.
+// Theme: 'dark' (the default, black canvas) or 'light' (paper). A stored
+// choice is applied before first paint by the inline script in index.html.
 
 const KEY = 'theme';
 
 export function currentTheme() {
   const set = document.documentElement.dataset.theme;
   if (set) return set;
-  return window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+  return 'dark';
 }
 
 export function toggleTheme() {

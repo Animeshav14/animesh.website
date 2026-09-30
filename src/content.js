@@ -106,6 +106,21 @@ export const research = [
   },
 ];
 
+// U.S. free trade agreements by year of entry into force (USTR). Context for
+// the trade study's event-time design, not a list of its sample.
+export const ftaEvents = [
+  [1985, ['Israel']],
+  [1989, ['Canada']],
+  [1994, ['Mexico']],
+  [2001, ['Jordan']],
+  [2004, ['Chile', 'Singapore']],
+  [2005, ['Australia']],
+  [2006, ['Morocco', 'El Salvador', 'Honduras', 'Nicaragua', 'Guatemala', 'Bahrain']],
+  [2007, ['Dominican Republic']],
+  [2009, ['Costa Rica', 'Oman', 'Peru']],
+  [2012, ['Korea', 'Colombia', 'Panama']],
+];
+
 export const experience = [
   {
     group: 'Research',
@@ -251,6 +266,7 @@ export const projects = [
         link: 'https://github.com/Animeshav14/PMG-Econ',
       },
       {
+        id: 'monte-carlo',
         title: 'Retirement portfolio Monte Carlo',
         context: '2025',
         text: 'Simulates whether a retirement fund lasts from a starting age to a target age under inflation-adjusted withdrawals, and compares investment strategies by their probability of running out.',
@@ -258,6 +274,7 @@ export const projects = [
         link: 'https://github.com/Animeshav14/MonteCarlo_Simulation',
       },
       {
+        id: 'nowcasting',
         title: 'Recession nowcasting',
         context: '2025',
         text: 'Yield-curve model and memo; described under Research.',
@@ -265,6 +282,7 @@ export const projects = [
         link: 'https://github.com/Animeshav14/recession-nowcasting',
       },
       {
+        id: 'debt-relief',
         title: 'Debt-Relief',
         context: 'HackGT 2025',
         text: 'A Flask app that combines the Capital One Nessie API with a user’s income, expenses, and debts to project payoff timelines and compare repayment strategies.',

@@ -1,10 +1,12 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { person } from '../content.js';
+import { SpreadRule } from './Horizon.jsx';
 
 export default function Footer({ openPalette }) {
   return (
     <footer className="colophon">
+      <SpreadRule />
       <div className="frame">
         <p>
           <Link to="/">Animesh Shrestha</Link>
